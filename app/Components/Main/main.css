@@ -16,8 +16,6 @@
 }
 :root .main .secTitle .title {
   position: relative;
-  width: -webkit-max-content;
-  width: -moz-max-content;
   width: max-content;
   color: var(--textColor);
   margin: 1rem 0;
@@ -61,8 +59,7 @@
 :root .main .secContent .singleDestination .imageDiv img {
   height: 100%;
   width: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   transition: 2s ease;
 }
 :root .main .secContent .singleDestination .imageDiv:hover img {
@@ -153,4 +150,6 @@
   .secContent .singleDestination {
     height: auto;
   }
-}/*# sourceMappingURL=main.css.map */
+}
+
+/*# sourceMappingURL=main.css.map */

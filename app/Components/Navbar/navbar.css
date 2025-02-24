@@ -37,8 +37,6 @@
   .header .navBar {
     background: var(--whiteColorDeam);
     position: absolute;
-    height: -webkit-max-content;
-    height: -moz-max-content;
     height: max-content;
     width: 80%;
     border-radius: 1rem;
@@ -145,4 +143,6 @@
   .header {
     padding: 1rem 8.5rem;
   }
-}/*# sourceMappingURL=navbar.css.map */
+}
+
+/*# sourceMappingURL=navbar.css.map */
