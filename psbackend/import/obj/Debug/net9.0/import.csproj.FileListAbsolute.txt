@@ -1,0 +1,14 @@
+C:\w4\psbackend\import\bin\Debug\net9.0\import.exe
+C:\w4\psbackend\import\bin\Debug\net9.0\import.deps.json
+C:\w4\psbackend\import\bin\Debug\net9.0\import.runtimeconfig.json
+C:\w4\psbackend\import\bin\Debug\net9.0\import.dll
+C:\w4\psbackend\import\bin\Debug\net9.0\import.pdb
+C:\w4\psbackend\import\obj\Debug\net9.0\import.GeneratedMSBuildEditorConfig.editorconfig
+C:\w4\psbackend\import\obj\Debug\net9.0\import.AssemblyInfoInputs.cache
+C:\w4\psbackend\import\obj\Debug\net9.0\import.AssemblyInfo.cs
+C:\w4\psbackend\import\obj\Debug\net9.0\import.csproj.CoreCompileInputs.cache
+C:\w4\psbackend\import\obj\Debug\net9.0\import.dll
+C:\w4\psbackend\import\obj\Debug\net9.0\refint\import.dll
+C:\w4\psbackend\import\obj\Debug\net9.0\import.pdb
+C:\w4\psbackend\import\obj\Debug\net9.0\import.genruntimeconfig.cache
+C:\w4\psbackend\import\obj\Debug\net9.0\ref\import.dll
