@@ -4,3 +4,6 @@ node_modules
 /build
 .env
 .vs
+/psbackend/ImportXml/bin/
+/psbackend/ImportXml/obj/
+/psbackend/ImportXml/Migrations/

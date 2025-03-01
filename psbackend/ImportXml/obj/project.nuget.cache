@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "7kCsYPrPQg4=",
+  "dgSpecHash": "jqmA0ZUR8As=",
   "success": true,
-  "projectFilePath": "C:\\w4\\pstravel\\psbackend\\ImportXml\\ImportXml.csproj",
+  "projectFilePath": "C:\\w4\\pstravel\\psbackend\\importXml\\ImportXml.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Farkaš\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\Farkaš\\.nuget\\packages\\microsoft.bcl.asyncinterfaces\\6.0.0\\microsoft.bcl.asyncinterfaces.6.0.0.nupkg.sha512",
