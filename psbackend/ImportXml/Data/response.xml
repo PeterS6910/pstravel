@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE offers SYSTEM "https://ssc-affil.invia.sk/dtd/invia_xml.dtd">
-<offers>
+<offers xmlns="">
   <timestamp>2025-02-27 11:47:40</timestamp>
   <count>25</count>
   <offer>
