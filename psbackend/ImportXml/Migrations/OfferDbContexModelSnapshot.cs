@@ -22,6 +22,48 @@ namespace ImportXml.Migrations
 
             MySqlModelBuilderExtensions.AutoIncrementColumns(modelBuilder);
 
+            modelBuilder.Entity("ImportXml.AfiTravelModel.Actionattributes", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("Attr")
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("varchar(150)");
+
+                    b.Property<Guid>("OfferId")
+                        .HasColumnType("char(36)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OfferId");
+
+                    b.ToTable("Actionattributes");
+                });
+
+            modelBuilder.Entity("ImportXml.AfiTravelModel.Airports", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("Airport")
+                        .IsRequired()
+                        .HasMaxLength(80)
+                        .HasColumnType("varchar(80)");
+
+                    b.Property<Guid>("OfferId")
+                        .HasColumnType("char(36)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("OfferId");
+
+                    b.ToTable("Airports");
+                });
+
             modelBuilder.Entity("ImportXml.AfiTravelModel.Coords", b =>
                 {
                     b.Property<Guid>("Id")
@@ -53,11 +95,13 @@ namespace ImportXml.Migrations
 
                     b.Property<string>("Country")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasMaxLength(80)
+                        .HasColumnType("varchar(80)");
 
                     b.Property<string>("Locality")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasMaxLength(120)
+                        .HasColumnType("varchar(120)");
 
                     b.Property<Guid>("OfferId")
                         .HasColumnType("char(36)");
@@ -72,9 +116,14 @@ namespace ImportXml.Migrations
 
             modelBuilder.Entity("ImportXml.AfiTravelModel.HotelInfo", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<Guid>("HotelInfoId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("char(36)");
+
+                    b.Property<string>("Id")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("varchar(30)");
 
                     b.Property<Guid>("OfferId")
                         .HasColumnType("char(36)");
@@ -90,9 +139,10 @@ namespace ImportXml.Migrations
 
                     b.Property<string>("Url")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasMaxLength(150)
+                        .HasColumnType("varchar(150)");
 
-                    b.HasKey("Id");
+                    b.HasKey("HotelInfoId");
 
                     b.HasIndex("OfferId")
                         .IsUnique();
@@ -111,11 +161,13 @@ namespace ImportXml.Migrations
 
                     b.Property<string>("Food")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
 
                     b.Property<string>("Hotel")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasMaxLength(150)
+                        .HasColumnType("varchar(150)");
 
                     b.Property<string>("Image")
                         .IsRequired()
@@ -135,33 +187,39 @@ namespace ImportXml.Migrations
 
                     b.Property<string>("PriceCurrency")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasMaxLength(20)
+                        .HasColumnType("varchar(20)");
 
                     b.Property<decimal>("Tax")
                         .HasColumnType("decimal(65,30)");
 
                     b.Property<string>("TaxCurrency")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasMaxLength(20)
+                        .HasColumnType("varchar(20)");
 
                     b.Property<string>("TermType")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasMaxLength(20)
+                        .HasColumnType("varchar(20)");
 
                     b.Property<decimal>("TotalPrice")
                         .HasColumnType("decimal(65,30)");
 
                     b.Property<string>("TotalPriceCurrency")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasMaxLength(20)
+                        .HasColumnType("varchar(20)");
 
                     b.Property<string>("Transportation")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
 
                     b.Property<string>("Url")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasMaxLength(250)
+                        .HasColumnType("varchar(250)");
 
                     b.HasKey("Id");
 
@@ -245,13 +303,32 @@ namespace ImportXml.Migrations
 
                     b.Property<string>("Type")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasMaxLength(20)
+                        .HasColumnType("varchar(20)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("OfferId");
 
                     b.ToTable("TourType");
+                });
+
+            modelBuilder.Entity("ImportXml.AfiTravelModel.Actionattributes", b =>
+                {
+                    b.HasOne("ImportXml.AfiTravelModel.Offer", null)
+                        .WithMany("Actionattributes")
+                        .HasForeignKey("OfferId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("ImportXml.AfiTravelModel.Airports", b =>
+                {
+                    b.HasOne("ImportXml.AfiTravelModel.Offer", null)
+                        .WithMany("Airports")
+                        .HasForeignKey("OfferId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("ImportXml.AfiTravelModel.Coords", b =>
@@ -293,7 +370,7 @@ namespace ImportXml.Migrations
             modelBuilder.Entity("ImportXml.AfiTravelModel.Photo", b =>
                 {
                     b.HasOne("ImportXml.AfiTravelModel.Offer", null)
-                        .WithMany("Photo")
+                        .WithMany("Photos")
                         .HasForeignKey("OfferId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -325,13 +402,17 @@ namespace ImportXml.Migrations
 
             modelBuilder.Entity("ImportXml.AfiTravelModel.Offer", b =>
                 {
+                    b.Navigation("Actionattributes");
+
+                    b.Navigation("Airports");
+
                     b.Navigation("Destination")
                         .IsRequired();
 
                     b.Navigation("HotelInfo")
                         .IsRequired();
 
-                    b.Navigation("Photo");
+                    b.Navigation("Photos");
 
                     b.Navigation("Term")
                         .IsRequired();

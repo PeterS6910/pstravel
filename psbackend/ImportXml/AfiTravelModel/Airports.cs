@@ -8,13 +8,14 @@ using System.Threading.Tasks;
 
 namespace ImportXml.AfiTravelModel
 {
-    public class Term
+    public class Airports
     {
         [Key]
         public Guid Id { get; set; } = Guid.NewGuid();
         public Guid OfferId { get; set; }
-        public DateTime From { get; set; }
-        public DateTime To { get; set; }
-        public int Length { get; set; }
+
+        [MaxLength(80)]
+        public string Airport { get; set; }
     }
 }
+

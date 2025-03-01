@@ -17,6 +17,7 @@ namespace ImportXml.AfiTravelModel
         public DbSet<TourType> TourType { get; set; }
         public DbSet<HotelInfo> HotelInfo { get; set; }
         public DbSet<Coords> Coords { get; set; }
+        public DbSet<Airports> Airports { get; set; }
 
         private readonly string _connectionString;
         public OfferDbContex()
@@ -49,7 +50,7 @@ namespace ImportXml.AfiTravelModel
                     .OnDelete(DeleteBehavior.Cascade); // Ak sa odstráni Offers, odstránia sa aj OfferItems
             });
             modelBuilder.Entity<Offer>()
-                .HasMany(o => o.Photo)
+                .HasMany(o => o.Photos)
                 .WithOne()
                 .HasForeignKey(p => p.OfferId);
 
@@ -77,6 +78,17 @@ namespace ImportXml.AfiTravelModel
                 .HasOne(o => o.Coords)
                 .WithOne()
                 .HasForeignKey<Coords>(t => t.HotelInfoId);
+
+            modelBuilder.Entity<Offer>()
+               .HasMany(o => o.Actionattributes)
+               .WithOne()
+               .HasForeignKey(p => p.OfferId);
+
+            modelBuilder.Entity<Offer>()
+               .HasMany(o => o.Airports)
+               .WithOne()
+               .HasForeignKey(t => t.OfferId);
+            
         }
     }
 }

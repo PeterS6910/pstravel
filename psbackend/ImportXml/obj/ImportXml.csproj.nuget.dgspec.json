@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\w4\\pstravel\\psbackend\\ImportXml\\ImportXml.csproj": {}
+    "C:\\w4\\pstravel\\psbackend\\importXml\\ImportXml.csproj": {}
   },
   "projects": {
-    "C:\\w4\\pstravel\\psbackend\\ImportXml\\ImportXml.csproj": {
+    "C:\\w4\\pstravel\\psbackend\\importXml\\ImportXml.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\w4\\pstravel\\psbackend\\ImportXml\\ImportXml.csproj",
+        "projectUniqueName": "C:\\w4\\pstravel\\psbackend\\importXml\\ImportXml.csproj",
         "projectName": "ImportXml",
-        "projectPath": "C:\\w4\\pstravel\\psbackend\\ImportXml\\ImportXml.csproj",
+        "projectPath": "C:\\w4\\pstravel\\psbackend\\importXml\\ImportXml.csproj",
         "packagesPath": "C:\\Users\\Farkaš\\.nuget\\packages\\",
-        "outputPath": "C:\\w4\\pstravel\\psbackend\\ImportXml\\obj\\",
+        "outputPath": "C:\\w4\\pstravel\\psbackend\\importXml\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
