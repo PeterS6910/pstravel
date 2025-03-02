@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace ImportXml.AfiTravelModel
 {
@@ -15,6 +16,7 @@ namespace ImportXml.AfiTravelModel
         public Guid OfferId { get; set; }
 
         [MaxLength(80)]
+        [XmlElement("airport")]
         public string Airport { get; set; }
     }
 }

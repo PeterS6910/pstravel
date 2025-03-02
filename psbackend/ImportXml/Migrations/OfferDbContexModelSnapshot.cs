@@ -161,15 +161,17 @@ namespace ImportXml.Migrations
 
                     b.Property<string>("Food")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("varchar(50)");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("Hotel")
                         .IsRequired()
-                        .HasMaxLength(150)
-                        .HasColumnType("varchar(150)");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("Image")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("ImageAlt")
                         .IsRequired()
                         .HasColumnType("longtext");
 
@@ -187,39 +189,33 @@ namespace ImportXml.Migrations
 
                     b.Property<string>("PriceCurrency")
                         .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("varchar(20)");
+                        .HasColumnType("longtext");
 
                     b.Property<decimal>("Tax")
                         .HasColumnType("decimal(65,30)");
 
                     b.Property<string>("TaxCurrency")
                         .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("varchar(20)");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("TermType")
                         .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("varchar(20)");
+                        .HasColumnType("longtext");
 
                     b.Property<decimal>("TotalPrice")
                         .HasColumnType("decimal(65,30)");
 
                     b.Property<string>("TotalPriceCurrency")
                         .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("varchar(20)");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("Transportation")
                         .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("varchar(50)");
+                        .HasColumnType("longtext");
 
                     b.Property<string>("Url")
                         .IsRequired()
-                        .HasMaxLength(250)
-                        .HasColumnType("varchar(250)");
+                        .HasColumnType("longtext");
 
                     b.HasKey("Id");
 

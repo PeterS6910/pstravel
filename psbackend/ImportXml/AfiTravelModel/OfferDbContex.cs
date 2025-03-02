@@ -18,6 +18,7 @@ namespace ImportXml.AfiTravelModel
         public DbSet<HotelInfo> HotelInfo { get; set; }
         public DbSet<Coords> Coords { get; set; }
         public DbSet<Airports> Airports { get; set; }
+        public DbSet<Actionattributes> Actionattributes { get; set; }
 
         private readonly string _connectionString;
         public OfferDbContex()

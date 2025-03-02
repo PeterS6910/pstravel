@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace ImportXml.AfiTravelModel
 {
@@ -14,6 +15,7 @@ namespace ImportXml.AfiTravelModel
         public Guid OfferId { get; set; }
 
         [MaxLength(150)]  // Nastaví dĺžku VARCHAR na 50
+        [XmlElement("attr")]
         public string Attr { get; set; }
     }
 }
