@@ -11,22 +11,17 @@ namespace ImportXml.AfiTravelModel
     public class Offer
     {
         [Key]
-        public Guid Id { get; set; }
+        public Guid Id { get; set; } = Guid.NewGuid();
+
+        public Guid CestovkaId { get; set; }
+
         public Guid OffersId { get; set; } // Cudzie kľúčové pole
 
         [XmlElement("image")]
-        public string Image { get; set; }
+        public Image Image { get; set; }
 
-        [XmlAttribute("width")]
-        public int ImageWidth { get; set; }
-
-        [XmlAttribute("height")]
-        public int ImageHeight { get; set; }
-
-        [XmlAttribute("alt")]
-        public string ImageAlt { get; set; }
-
-        [XmlElement("photos")]
+        [XmlArray("photos")] 
+        [XmlArrayItem("photo")]
         public List<Photo> Photos { get; set; } = new List<Photo>();
 
         [XmlElement("destination")]
@@ -39,24 +34,13 @@ namespace ImportXml.AfiTravelModel
         public Term Term { get; set; }
 
         [XmlElement("price")]
-        public decimal Price { get; set; }
-
-        [XmlAttribute("currency")]
-        public string PriceCurrency { get; set; }
+        public PriceDetails Price { get; set; }
 
         [XmlElement("tax")]
-        public decimal Tax { get; set; }
-
-        [XmlIgnore]
-        //[XmlAttribute("currency")]
-        public string TaxCurrency { get; set; }
+        public TaxDetails Tax { get; set; }
 
         [XmlElement("totalprice")]
-        public decimal TotalPrice { get; set; }
-
-        [XmlIgnore]
-        //[XmlAttribute("currency")]
-        public string TotalPriceCurrency { get; set; }
+        public TotalPriceDetails TotalPrice { get; set; }
 
         [XmlElement("discount")]
         public decimal Discount { get; set; }
@@ -67,19 +51,22 @@ namespace ImportXml.AfiTravelModel
         [XmlElement("transportation")]
         public string Transportation { get; set; }
 
-        [XmlElement("airports")]
+        [XmlArray("airports")]
+        [XmlArrayItem("airport")]
         public List<Airports> Airports { get; set; } = new List<Airports>();
 
         [XmlElement("url")]
         public string Url { get; set; }
 
-        [XmlElement("tourtypes")]
+        [XmlArray("tourtypes")]
+        [XmlArrayItem("type")]
         public List<TourType> TourType { get; set; } = new List<TourType>();
 
         [XmlElement("hotelinfo")]
         public HotelInfo HotelInfo { get; set; }
 
-        [XmlElement("actionattributes")]
+        [XmlArray("actionattributes")]
+        [XmlArrayItem("attr")]
         public List<Actionattributes> Actionattributes { get; set; } = new List<Actionattributes> { };
 
         [XmlElement("termtype")]

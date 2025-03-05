@@ -16,7 +16,7 @@ namespace ImportXml.AfiTravelModel
         public Guid OfferId { get; set; }
         
         [MaxLength(150)]
-        [XmlElement("photo")]
+        [XmlText]
         public string Url { get; set; }
     }
 }

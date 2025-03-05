@@ -32,6 +32,7 @@ namespace ImportXml.AfiTravelModel
         public Coords Coords { get; set; }
 
         [MaxLength(150)]
-        public string Url { get; set; }
+        [XmlElement("url")]
+        public string? Url { get; set; }
     }
 }

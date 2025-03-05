@@ -19,6 +19,11 @@ namespace ImportXml.AfiTravelModel
         public DbSet<Coords> Coords { get; set; }
         public DbSet<Airports> Airports { get; set; }
         public DbSet<Actionattributes> Actionattributes { get; set; }
+        public DbSet<Image> Images { get; set; }
+        public DbSet<Cestovka> Cestovka { get; set; }
+        public DbSet<PriceDetails> PriceDetails { get; set; }
+        public DbSet<TaxDetails> TaxDetails { get; set; }
+        public DbSet<TotalPriceDetails> TotalPriceDetails { get; set; }
 
         private readonly string _connectionString;
         public OfferDbContex()
@@ -89,7 +94,32 @@ namespace ImportXml.AfiTravelModel
                .HasMany(o => o.Airports)
                .WithOne()
                .HasForeignKey(t => t.OfferId);
-            
+
+            modelBuilder.Entity<Offer>()
+                .HasOne<Cestovka>()  
+                .WithMany()  
+                .HasForeignKey(o => o.CestovkaId);
+
+            modelBuilder.Entity<Offer>()
+                .HasOne(o => o.Image)
+                .WithOne()
+                .HasForeignKey<Image>(d => d.OfferId);
+
+            modelBuilder.Entity<Offer>()
+                  .HasOne(o => o.Price)                 // v triede Offer.Price
+                  .WithOne()
+                  .HasForeignKey<PriceDetails>(d => d.OfferId);
+
+            // Pre Tax
+            modelBuilder.Entity<Offer>()
+                  .HasOne(o => o.Tax)
+                  .WithOne()
+                  .HasForeignKey<TaxDetails>(d => d.OfferId);
+
+            modelBuilder.Entity<Offer>()
+                  .HasOne(o => o.TotalPrice)
+                  .WithOne()
+                  .HasForeignKey<TotalPriceDetails>(d => d.OfferId);
         }
     }
 }

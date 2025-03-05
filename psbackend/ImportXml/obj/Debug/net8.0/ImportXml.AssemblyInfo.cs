@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ImportXml")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e50c7aa8d81ab0d5146d2e84807ddb7f1a9c931e")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+55787c5d0ad86970d45a5b0000e7f94d2da21ce3")]
 [assembly: System.Reflection.AssemblyProductAttribute("ImportXml")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ImportXml")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

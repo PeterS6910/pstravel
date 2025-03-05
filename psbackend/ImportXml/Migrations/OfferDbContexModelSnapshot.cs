@@ -64,6 +64,35 @@ namespace ImportXml.Migrations
                     b.ToTable("Airports");
                 });
 
+            modelBuilder.Entity("ImportXml.AfiTravelModel.Cestovka", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("Email")
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
+
+                    b.Property<string>("ICO")
+                        .IsRequired()
+                        .HasMaxLength(10)
+                        .HasColumnType("varchar(10)");
+
+                    b.Property<string>("Kontakt")
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
+
+                    b.Property<string>("Nazov")
+                        .IsRequired()
+                        .HasMaxLength(80)
+                        .HasColumnType("varchar(80)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Cestovka");
+                });
+
             modelBuilder.Entity("ImportXml.AfiTravelModel.Coords", b =>
                 {
                     b.Property<Guid>("Id")
@@ -138,7 +167,6 @@ namespace ImportXml.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Url")
-                        .IsRequired()
                         .HasMaxLength(150)
                         .HasColumnType("varchar(150)");
 
@@ -150,10 +178,40 @@ namespace ImportXml.Migrations
                     b.ToTable("HotelInfo");
                 });
 
+            modelBuilder.Entity("ImportXml.AfiTravelModel.Image", b =>
+                {
+                    b.Property<Guid>("OfferId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("Alt")
+                        .HasMaxLength(200)
+                        .HasColumnType("varchar(200)");
+
+                    b.Property<string>("Height")
+                        .HasMaxLength(10)
+                        .HasColumnType("varchar(10)");
+
+                    b.Property<string>("Url")
+                        .IsRequired()
+                        .HasMaxLength(250)
+                        .HasColumnType("varchar(250)");
+
+                    b.Property<string>("Width")
+                        .HasMaxLength(10)
+                        .HasColumnType("varchar(10)");
+
+                    b.HasKey("OfferId");
+
+                    b.ToTable("Images");
+                });
+
             modelBuilder.Entity("ImportXml.AfiTravelModel.Offer", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<Guid>("CestovkaId")
                         .HasColumnType("char(36)");
 
                     b.Property<decimal>("Discount")
@@ -167,45 +225,10 @@ namespace ImportXml.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<string>("Image")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("ImageAlt")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<int>("ImageHeight")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ImageWidth")
-                        .HasColumnType("int");
-
                     b.Property<Guid>("OffersId")
                         .HasColumnType("char(36)");
 
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(65,30)");
-
-                    b.Property<string>("PriceCurrency")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<decimal>("Tax")
-                        .HasColumnType("decimal(65,30)");
-
-                    b.Property<string>("TaxCurrency")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
                     b.Property<string>("TermType")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<decimal>("TotalPrice")
-                        .HasColumnType("decimal(65,30)");
-
-                    b.Property<string>("TotalPriceCurrency")
                         .IsRequired()
                         .HasColumnType("longtext");
 
@@ -218,6 +241,8 @@ namespace ImportXml.Migrations
                         .HasColumnType("longtext");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CestovkaId");
 
                     b.HasIndex("OffersId");
 
@@ -262,6 +287,48 @@ namespace ImportXml.Migrations
                     b.ToTable("Photo");
                 });
 
+            modelBuilder.Entity("ImportXml.AfiTravelModel.PriceDetails", b =>
+                {
+                    b.Property<Guid>("OfferId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("Currency")
+                        .HasMaxLength(5)
+                        .HasColumnType("varchar(5)");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<string>("PriceAsText")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("OfferId");
+
+                    b.ToTable("PriceDetails");
+                });
+
+            modelBuilder.Entity("ImportXml.AfiTravelModel.TaxDetails", b =>
+                {
+                    b.Property<Guid>("OfferId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("Currency")
+                        .HasMaxLength(5)
+                        .HasColumnType("varchar(5)");
+
+                    b.Property<string>("PriceAsText")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<decimal>("Tax")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.HasKey("OfferId");
+
+                    b.ToTable("TaxDetails");
+                });
+
             modelBuilder.Entity("ImportXml.AfiTravelModel.Term", b =>
                 {
                     b.Property<Guid>("Id")
@@ -286,6 +353,27 @@ namespace ImportXml.Migrations
                         .IsUnique();
 
                     b.ToTable("Term");
+                });
+
+            modelBuilder.Entity("ImportXml.AfiTravelModel.TotalPriceDetails", b =>
+                {
+                    b.Property<Guid>("OfferId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("Currency")
+                        .HasMaxLength(5)
+                        .HasColumnType("varchar(5)");
+
+                    b.Property<decimal>("TotalPrice")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.Property<string>("TotalPriceAsText")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("OfferId");
+
+                    b.ToTable("TotalPriceDetails");
                 });
 
             modelBuilder.Entity("ImportXml.AfiTravelModel.TourType", b =>
@@ -354,8 +442,23 @@ namespace ImportXml.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("ImportXml.AfiTravelModel.Image", b =>
+                {
+                    b.HasOne("ImportXml.AfiTravelModel.Offer", null)
+                        .WithOne("Image")
+                        .HasForeignKey("ImportXml.AfiTravelModel.Image", "OfferId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("ImportXml.AfiTravelModel.Offer", b =>
                 {
+                    b.HasOne("ImportXml.AfiTravelModel.Cestovka", null)
+                        .WithMany()
+                        .HasForeignKey("CestovkaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("ImportXml.AfiTravelModel.Offers", null)
                         .WithMany("Offer")
                         .HasForeignKey("OffersId")
@@ -372,11 +475,38 @@ namespace ImportXml.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("ImportXml.AfiTravelModel.PriceDetails", b =>
+                {
+                    b.HasOne("ImportXml.AfiTravelModel.Offer", null)
+                        .WithOne("Price")
+                        .HasForeignKey("ImportXml.AfiTravelModel.PriceDetails", "OfferId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("ImportXml.AfiTravelModel.TaxDetails", b =>
+                {
+                    b.HasOne("ImportXml.AfiTravelModel.Offer", null)
+                        .WithOne("Tax")
+                        .HasForeignKey("ImportXml.AfiTravelModel.TaxDetails", "OfferId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("ImportXml.AfiTravelModel.Term", b =>
                 {
                     b.HasOne("ImportXml.AfiTravelModel.Offer", null)
                         .WithOne("Term")
                         .HasForeignKey("ImportXml.AfiTravelModel.Term", "OfferId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("ImportXml.AfiTravelModel.TotalPriceDetails", b =>
+                {
+                    b.HasOne("ImportXml.AfiTravelModel.Offer", null)
+                        .WithOne("TotalPrice")
+                        .HasForeignKey("ImportXml.AfiTravelModel.TotalPriceDetails", "OfferId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -408,9 +538,21 @@ namespace ImportXml.Migrations
                     b.Navigation("HotelInfo")
                         .IsRequired();
 
+                    b.Navigation("Image")
+                        .IsRequired();
+
                     b.Navigation("Photos");
 
+                    b.Navigation("Price")
+                        .IsRequired();
+
+                    b.Navigation("Tax")
+                        .IsRequired();
+
                     b.Navigation("Term")
+                        .IsRequired();
+
+                    b.Navigation("TotalPrice")
                         .IsRequired();
 
                     b.Navigation("TourType");

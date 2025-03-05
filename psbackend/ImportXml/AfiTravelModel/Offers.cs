@@ -9,19 +9,20 @@ using System.Xml.Serialization;
 
 namespace ImportXml.AfiTravelModel
 {
-    [XmlRoot("Offers")]
+    [XmlRoot("offers")]
     public class Offers
     {
         [Key]
-        public Guid Id { get; set; }
+        public Guid Id { get; set; } = Guid.NewGuid();
 
-        [XmlElement("Timestamp")]
+        [XmlIgnore]
+        //[XmlElement("timestamp")]
         public DateTime Timestamp { get; set; }
 
-        [XmlElement("Count")]
+        [XmlElement("count")]
         public int Count { get; set; }
 
-        [XmlElement("Offer")]
+        [XmlElement("offer")]
         public List<Offer> Offer { get; set; } = new List<Offer>();
     }
 }

@@ -15,7 +15,7 @@ namespace ImportXml.AfiTravelModel
         public Guid OfferId { get; set; }
 
         [MaxLength(150)]  // Nastaví dĺžku VARCHAR na 50
-        [XmlElement("attr")]
+        [XmlText]
         public string Attr { get; set; }
     }
 }
