@@ -1,0 +1,422 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<hotels count="400" offers_count="4960">
+  <hotel id="872984">
+    <name>Obala</name>
+    <category>3</category>
+    <destination>
+      <country>Černá Hora</country>
+      <locality>Černá Hora</locality>
+    </destination>
+    <description>
+      <![CDATA[<table><tr><th>Proč právě sem</th></tr><tr><td><ul><li>pláž Bečići je jednou z nejlepších pláží ve Středomoří</li><li>klidná oblast pro rodiny s dětmi</li><li>v blízkosti se nachází historické město Budva</li></ul>
+</td></tr><tr><th>Poloha</th></tr><tr><td>apartmány jsou umístěné v hotelu OBALA. Nachází se v letovisku
+Bečići, které je vzdáleno cca 3 km od Budvy</td></tr><tr><th>Vybavení a služby</th></tr><tr><td>recepce, restaurace, bar, výtah, sejf, WI-FI ZDARMA, úschovna
+zavazadel, pronájem auta, konferenční místnost, prádelna, parkování
+v blízkosti hotelu ZDARMA (omezený počet míst), městská garáž v
+blízkosti - cca 8 EUR/den/auto.</td></tr><tr><th>Ubytovaní</th></tr><tr><td>klimatizované apartmány typ: APT. 2+2(+1) - velikost cca 35 m2 -
+jedna 2 lůžková ložnice (francouzské lůžko), denní místnost se 2
+lůžky (rozkládací gauč) s možností jedné přistýlky (rozkládací
+křeslo vhodné pro dítě do 12 let),<br>
+Apt. 2+2(+1) - č. 217 - velikost cca 50 m2 - jedna 2 lůžková
+ložnice, denní místnost se 2 lůžky (dvě pohovky) s možností jedné
+přistýlky. Vždy vybavený kuchyň. kout, sprcha a WC, SAT TV, WI-FI,
+žehlička, fén, balkon. V apt. 2+2(+1) - č. 217 je navíc pračka.</td></tr><tr><th>Sport a zábava</th></tr><tr><td>vodní sporty dle místní nabídky, dětský koutek, masáže</td></tr><tr><th>Stravování</th></tr><tr><td>vlastní, možnost dokoupení snídaní (formou bufetu) nebo
+kontinentálních (servírovaných) večeří - formou výběru ze 4 menu
+(polévka, hlavní jídlo, salát, dezert) - večeři si klienti vybírají
+v ten den.</td></tr><tr><th>Pláž</th></tr><tr><ptd>ísečná pláž Rafailovići - cca 90 m a písečná pláž Bečići - cca 650
+m. Lehátka a slunečníky na pláži za poplatek</td></tr><tr><th>Doplňující informace</th></tr><tr><td>
+pobytová taxa - cca 1 EUR/os./den a
+přihlašovací poplatek - cca 0,5 EUR/os./pobyt - platí se na
+místě.
+
+Klienti s dopravou vystupují a nastupují na
+magistrále, vzdálené cca 150 m (týká se autobusového transferu
+klientů s leteckou dopravou).
+
+</td></tr><tr><th>Slevy pro děti</th></tr><tr><td>dítě do 2 let bez nároku na lůžko - ZDARMA. Osoba na přistýlce -
+ZDARMA.</td></tr><tr><th>Cena zahrnuje</th></tr><tr><td>ubytování na vybraný počet nocí, spotřebu vody a energie, používání
+kuchyňského vybavení, výměnu ložního prádla 1x týdně, závěrečný
+úklid.</td></tr><tr><th>Volitelné doplatky</th></tr><tr><td>Možnost dokoupení: cestovního pojištění včetně pojištění storna
+zájezdu, snídaní, večeří.</td></tr></table>]]>
+    </description>
+    <image>https://image.dovolena.cz/photos/1a/b/49c67f29f0d605ca01876de3d1011.jpg</image>
+    <gallery>
+      <image>https://image.dovolena.cz/photos/1a/b/49c67f29f0d605ca01876de3d1011.jpg</image>
+      <image>https://image.dovolena.cz/photos/c0/3/b191d92a18060ba2be79112261336.jpg</image>
+      <image>https://image.dovolena.cz/photos/9d/1/ec5d13d4aacd3a0fa7876337a2cbe.jpg</image>
+      <image>https://image.dovolena.cz/photos/f7/e/f3779b1706c991772eb0fb02551f5.jpg</image>
+      <image>https://image.dovolena.cz/photos/2b/a/e05117aa1eb90ee99c71b0f72beeb.jpg</image>
+      <image>https://image.dovolena.cz/photos/f5/4/d6c71b0216daaacc74f41dffd27fe.jpg</image>
+      <image>https://image.dovolena.cz/photos/2b/5/6fafe3404219ea3132e67537502c0.jpg</image>
+      <image>https://image.dovolena.cz/photos/bd/0/6943cbfb91d328e4245966c313f25.jpg</image>
+      <image>https://image.dovolena.cz/photos/26/6/60c5057f03fda74bbd7b9abdd4e64.jpg</image>
+      <image>https://image.dovolena.cz/photos/ab/f/e5ec634b2492ef13e03f62160efe4.jpg</image>
+    </gallery>
+    <gps>42.280872,18.880713</gps>
+    <url>https://dovolena.cz/trip-detail?length=1-55&amp;price=1-10000000&amp;cid=23658&amp;adult=2&amp;airport=40-45-41-61-42-43-48-47&amp;date=11.03.2025-10.03.2026&amp;tripType=80&amp;transport=35&amp;transfer=1&amp;hotelId=872984</url>
+    <price currency="CZK">5890</price>
+    <nicePrice>5 890 Kč</nicePrice>
+    <offers>
+      <offer id="163467931" days="8" status="normal">
+        <price currency="CZK">5890</price>
+        <nicePrice>5 890 Kč</nicePrice>
+        <date_from>2025-06-18</date_from>
+        <nice_date_from>18.6.2025</nice_date_from>
+        <date_to>2025-06-25</date_to>
+        <nice_date_to>25.6.2025</nice_date_to>
+        <food>Bez stravy</food>
+        <transport>Letecky</transport>
+        <airport>Praha</airport>
+        <url>https://dovolena.cz/trip-detail?length=1-60&amp;price=1-1000000&amp;cid=23658&amp;adult=2&amp;airport=40-45-41-61-42-43-48-47&amp;date=11.03.2025-10.03.2026&amp;tripType=80&amp;transport=35&amp;transfer=1&amp;hotelId=872984&amp;reference=040500010d521a4f210807001419d64000310100000000</url>
+      </offer>
+      <offer id="162150418" days="8" status="normal">
+        <price currency="CZK">5890</price>
+        <nicePrice>5 890 Kč</nicePrice>
+        <date_from>2025-06-11</date_from>
+        <nice_date_from>11.6.2025</nice_date_from>
+        <date_to>2025-06-18</date_to>
+        <nice_date_to>18.6.2025</nice_date_to>
+        <food>Bez stravy</food>
+        <transport>Letecky</transport>
+        <airport>Praha</airport>
+        <url>https://dovolena.cz/trip-detail?length=1-60&amp;price=1-1000000&amp;cid=23658&amp;adult=2&amp;airport=40-45-41-61-42-43-48-47&amp;date=11.03.2025-10.03.2026&amp;tripType=80&amp;transport=35&amp;transfer=1&amp;hotelId=872984&amp;reference=040500010d521a4f1a0807001419d64000310100000000</url>
+      </offer>
+      <offer id="163783894" days="8" status="normal">
+        <price currency="CZK">5890</price>
+        <nicePrice>5 890 Kč</nicePrice>
+        <date_from>2025-06-20</date_from>
+        <nice_date_from>20.6.2025</nice_date_from>
+        <date_to>2025-06-27</date_to>
+        <nice_date_to>27.6.2025</nice_date_to>
+        <food>Bez stravy</food>
+        <transport>Letecky</transport>
+        <airport>Praha</airport>
+        <url>https://dovolena.cz/trip-detail?length=1-60&amp;price=1-1000000&amp;cid=23658&amp;adult=2&amp;airport=40-45-41-61-42-43-48-47&amp;date=11.03.2025-10.03.2026&amp;tripType=80&amp;transport=35&amp;transfer=1&amp;hotelId=872984&amp;reference=040500010d521a4f230807001419d64000310100000000</url>
+      </offer>
+      <offer id="162410901" days="8" status="normal">
+        <price currency="CZK">5890</price>
+        <nicePrice>5 890 Kč</nicePrice>
+        <date_from>2025-06-13</date_from>
+        <nice_date_from>13.6.2025</nice_date_from>
+        <date_to>2025-06-20</date_to>
+        <nice_date_to>20.6.2025</nice_date_to>
+        <food>Bez stravy</food>
+        <transport>Letecky</transport>
+        <airport>Praha</airport>
+        <url>https://dovolena.cz/trip-detail?length=1-60&amp;price=1-1000000&amp;cid=23658&amp;adult=2&amp;airport=40-45-41-61-42-43-48-47&amp;date=11.03.2025-10.03.2026&amp;tripType=80&amp;transport=35&amp;transfer=1&amp;hotelId=872984&amp;reference=040500010d521a4f1c0807001419d64000310100000000</url>
+      </offer>
+      <offer id="163467931" days="8" status="normal">
+        <price currency="CZK">5890</price>
+        <nicePrice>5 890 Kč</nicePrice>
+        <date_from>2025-06-18</date_from>
+        <nice_date_from>18.6.2025</nice_date_from>
+        <date_to>2025-06-25</date_to>
+        <nice_date_to>25.6.2025</nice_date_to>
+        <food>Bez stravy</food>
+        <transport>Letecky</transport>
+        <airport>Praha</airport>
+        <url>https://dovolena.cz/trip-detail?length=1-60&amp;price=1-1000000&amp;cid=23658&amp;adult=2&amp;airport=40-45-41-61-42-43-48-47&amp;date=11.03.2025-10.03.2026&amp;tripType=80&amp;transport=35&amp;transfer=1&amp;hotelId=872984&amp;reference=040500010d521a4f210807001419d64100310100000000</url>
+      </offer>
+      <offer id="162150418" days="8" status="normal">
+        <price currency="CZK">5890</price>
+        <nicePrice>5 890 Kč</nicePrice>
+        <date_from>2025-06-11</date_from>
+        <nice_date_from>11.6.2025</nice_date_from>
+        <date_to>2025-06-18</date_to>
+        <nice_date_to>18.6.2025</nice_date_to>
+        <food>Bez stravy</food>
+        <transport>Letecky</transport>
+        <airport>Praha</airport>
+        <url>https://dovolena.cz/trip-detail?length=1-60&amp;price=1-1000000&amp;cid=23658&amp;adult=2&amp;airport=40-45-41-61-42-43-48-47&amp;date=11.03.2025-10.03.2026&amp;tripType=80&amp;transport=35&amp;transfer=1&amp;hotelId=872984&amp;reference=040500010d521a4f1a0807001419d64100310100000000</url>
+      </offer>
+      <offer id="163783894" days="8" status="normal">
+        <price currency="CZK">5890</price>
+        <nicePrice>5 890 Kč</nicePrice>
+        <date_from>2025-06-20</date_from>
+        <nice_date_from>20.6.2025</nice_date_from>
+        <date_to>2025-06-27</date_to>
+        <nice_date_to>27.6.2025</nice_date_to>
+        <food>Bez stravy</food>
+        <transport>Letecky</transport>
+        <airport>Praha</airport>
+        <url>https://dovolena.cz/trip-detail?length=1-60&amp;price=1-1000000&amp;cid=23658&amp;adult=2&amp;airport=40-45-41-61-42-43-48-47&amp;date=11.03.2025-10.03.2026&amp;tripType=80&amp;transport=35&amp;transfer=1&amp;hotelId=872984&amp;reference=040500010d521a4f230807001419d64100310100000000</url>
+      </offer>
+      <offer id="162410901" days="8" status="normal">
+        <price currency="CZK">5890</price>
+        <nicePrice>5 890 Kč</nicePrice>
+        <date_from>2025-06-13</date_from>
+        <nice_date_from>13.6.2025</nice_date_from>
+        <date_to>2025-06-20</date_to>
+        <nice_date_to>20.6.2025</nice_date_to>
+        <food>Bez stravy</food>
+        <transport>Letecky</transport>
+        <airport>Praha</airport>
+        <url>https://dovolena.cz/trip-detail?length=1-60&amp;price=1-1000000&amp;cid=23658&amp;adult=2&amp;airport=40-45-41-61-42-43-48-47&amp;date=11.03.2025-10.03.2026&amp;tripType=80&amp;transport=35&amp;transfer=1&amp;hotelId=872984&amp;reference=040500010d521a4f1c0807001419d64100310100000000</url>
+      </offer>
+      <offer id="164965897" days="8" status="normal">
+        <price currency="CZK">6048</price>
+        <nicePrice>6 048 Kč</nicePrice>
+        <date_from>2025-06-25</date_from>
+        <nice_date_from>25.6.2025</nice_date_from>
+        <date_to>2025-07-02</date_to>
+        <nice_date_to>2.7.2025</nice_date_to>
+        <food>Bez stravy</food>
+        <transport>Letecky</transport>
+        <airport>Praha</airport>
+        <url>https://dovolena.cz/trip-detail?length=1-60&amp;price=1-1000000&amp;cid=23658&amp;adult=2&amp;airport=40-45-41-61-42-43-48-47&amp;date=11.03.2025-10.03.2026&amp;tripType=80&amp;transport=35&amp;transfer=1&amp;hotelId=872984&amp;reference=040500010d521a4f280807001419d64000310100000000</url>
+      </offer>
+      <offer id="164965897" days="8" status="normal">
+        <price currency="CZK">6048</price>
+        <nicePrice>6 048 Kč</nicePrice>
+        <date_from>2025-06-25</date_from>
+        <nice_date_from>25.6.2025</nice_date_from>
+        <date_to>2025-07-02</date_to>
+        <nice_date_to>2.7.2025</nice_date_to>
+        <food>Bez stravy</food>
+        <transport>Letecky</transport>
+        <airport>Praha</airport>
+        <url>https://dovolena.cz/trip-detail?length=1-60&amp;price=1-1000000&amp;cid=23658&amp;adult=2&amp;airport=40-45-41-61-42-43-48-47&amp;date=11.03.2025-10.03.2026&amp;tripType=80&amp;transport=35&amp;transfer=1&amp;hotelId=872984&amp;reference=040500010d521a4f280807001419d64100310100000000</url>
+      </offer>
+      <offer id="165326858" days="8" status="normal">
+        <price currency="CZK">6362</price>
+        <nicePrice>6 362 Kč</nicePrice>
+        <date_from>2025-06-27</date_from>
+        <nice_date_from>27.6.2025</nice_date_from>
+        <date_to>2025-07-04</date_to>
+        <nice_date_to>4.7.2025</nice_date_to>
+        <food>Bez stravy</food>
+        <transport>Letecky</transport>
+        <airport>Praha</airport>
+        <url>https://dovolena.cz/trip-detail?length=1-60&amp;price=1-1000000&amp;cid=23658&amp;adult=2&amp;airport=40-45-41-61-42-43-48-47&amp;date=11.03.2025-10.03.2026&amp;tripType=80&amp;transport=35&amp;transfer=1&amp;hotelId=872984&amp;reference=040500010d521a4f2a0807001419d64000310100000000</url>
+      </offer>
+      <offer id="159404757" days="8" status="normal">
+        <price currency="CZK">6362</price>
+        <nicePrice>6 362 Kč</nicePrice>
+        <date_from>2025-08-29</date_from>
+        <nice_date_from>29.8.2025</nice_date_from>
+        <date_to>2025-09-05</date_to>
+        <nice_date_to>5.9.2025</nice_date_to>
+        <food>Bez stravy</food>
+        <transport>Letecky</transport>
+        <airport>Praha</airport>
+        <url>https://dovolena.cz/trip-detail?length=1-60&amp;price=1-1000000&amp;cid=23658&amp;adult=2&amp;airport=40-45-41-61-42-43-48-47&amp;date=11.03.2025-10.03.2026&amp;tripType=80&amp;transport=35&amp;transfer=1&amp;hotelId=872984&amp;reference=040500010d521a4f690807001419d64000310100000000</url>
+      </offer>
+      <offer id="165326858" days="8" status="normal">
+        <price currency="CZK">6362</price>
+        <nicePrice>6 362 Kč</nicePrice>
+        <date_from>2025-06-27</date_from>
+        <nice_date_from>27.6.2025</nice_date_from>
+        <date_to>2025-07-04</date_to>
+        <nice_date_to>4.7.2025</nice_date_to>
+        <food>Bez stravy</food>
+        <transport>Letecky</transport>
+        <airport>Praha</airport>
+        <url>https://dovolena.cz/trip-detail?length=1-60&amp;price=1-1000000&amp;cid=23658&amp;adult=2&amp;airport=40-45-41-61-42-43-48-47&amp;date=11.03.2025-10.03.2026&amp;tripType=80&amp;transport=35&amp;transfer=1&amp;hotelId=872984&amp;reference=040500010d521a4f2a0807001419d64100310100000000</url>
+      </offer>
+      <offer id="159404757" days="8" status="normal">
+        <price currency="CZK">6362</price>
+        <nicePrice>6 362 Kč</nicePrice>
+        <date_from>2025-08-29</date_from>
+        <nice_date_from>29.8.2025</nice_date_from>
+        <date_to>2025-09-05</date_to>
+        <nice_date_to>5.9.2025</nice_date_to>
+        <food>Bez stravy</food>
+        <transport>Letecky</transport>
+        <airport>Praha</airport>
+        <url>https://dovolena.cz/trip-detail?length=1-60&amp;price=1-1000000&amp;cid=23658&amp;adult=2&amp;airport=40-45-41-61-42-43-48-47&amp;date=11.03.2025-10.03.2026&amp;tripType=80&amp;transport=35&amp;transfer=1&amp;hotelId=872984&amp;reference=040500010d521a4f690807001419d64100310100000000</url>
+      </offer>
+      <offer id="165326867" days="8" status="normal">
+        <price currency="CZK">6676</price>
+        <nicePrice>6 676 Kč</nicePrice>
+        <date_from>2025-08-27</date_from>
+        <nice_date_from>27.8.2025</nice_date_from>
+        <date_to>2025-09-03</date_to>
+        <nice_date_to>3.9.2025</nice_date_to>
+        <food>Bez stravy</food>
+        <transport>Letecky</transport>
+        <airport>Praha</airport>
+        <url>https://dovolena.cz/trip-detail?length=1-60&amp;price=1-1000000&amp;cid=23658&amp;adult=2&amp;airport=40-45-41-61-42-43-48-47&amp;date=11.03.2025-10.03.2026&amp;tripType=80&amp;transport=35&amp;transfer=1&amp;hotelId=872984&amp;reference=040500010d521a4f670807001419d64000310100000000</url>
+      </offer>
+      <offer id="165326867" days="8" status="normal">
+        <price currency="CZK">6676</price>
+        <nicePrice>6 676 Kč</nicePrice>
+        <date_from>2025-08-27</date_from>
+        <nice_date_from>27.8.2025</nice_date_from>
+        <date_to>2025-09-03</date_to>
+        <nice_date_to>3.9.2025</nice_date_to>
+        <food>Bez stravy</food>
+        <transport>Letecky</transport>
+        <airport>Praha</airport>
+        <url>https://dovolena.cz/trip-detail?length=1-60&amp;price=1-1000000&amp;cid=23658&amp;adult=2&amp;airport=40-45-41-61-42-43-48-47&amp;date=11.03.2025-10.03.2026&amp;tripType=80&amp;transport=35&amp;transfer=1&amp;hotelId=872984&amp;reference=040500010d521a4f670807001419d64100310100000000</url>
+      </offer>
+      <offer id="166565064" days="8" status="normal">
+        <price currency="CZK">6990</price>
+        <nicePrice>6 990 Kč</nicePrice>
+        <date_from>2025-07-04</date_from>
+        <nice_date_from>4.7.2025</nice_date_from>
+        <date_to>2025-07-11</date_to>
+        <nice_date_to>11.7.2025</nice_date_to>
+        <food>Bez stravy</food>
+        <transport>Letecky</transport>
+        <airport>Praha</airport>
+        <url>https://dovolena.cz/trip-detail?length=1-60&amp;price=1-1000000&amp;cid=23658&amp;adult=2&amp;airport=40-45-41-61-42-43-48-47&amp;date=11.03.2025-10.03.2026&amp;tripType=80&amp;transport=35&amp;transfer=1&amp;hotelId=872984&amp;reference=040500010d521a4f310807001419d64000310100000000</url>
+      </offer>
+      <offer id="164084490" days="8" status="normal">
+        <price currency="CZK">6990</price>
+        <nicePrice>6 990 Kč</nicePrice>
+        <date_from>2025-08-22</date_from>
+        <nice_date_from>22.8.2025</nice_date_from>
+        <date_to>2025-08-29</date_to>
+        <nice_date_to>29.8.2025</nice_date_to>
+        <food>Bez stravy</food>
+        <transport>Letecky</transport>
+        <airport>Praha</airport>
+        <url>https://dovolena.cz/trip-detail?length=1-60&amp;price=1-1000000&amp;cid=23658&amp;adult=2&amp;airport=40-45-41-61-42-43-48-47&amp;date=11.03.2025-10.03.2026&amp;tripType=80&amp;transport=35&amp;transfer=1&amp;hotelId=872984&amp;reference=040500010d521a4f620807001419d64000310100000000</url>
+      </offer>
+      <offer id="165970260" days="8" status="normal">
+        <price currency="CZK">6990</price>
+        <nicePrice>6 990 Kč</nicePrice>
+        <date_from>2025-07-02</date_from>
+        <nice_date_from>2.7.2025</nice_date_from>
+        <date_to>2025-07-09</date_to>
+        <nice_date_to>9.7.2025</nice_date_to>
+        <food>Bez stravy</food>
+        <transport>Letecky</transport>
+        <airport>Praha</airport>
+        <url>https://dovolena.cz/trip-detail?length=1-60&amp;price=1-1000000&amp;cid=23658&amp;adult=2&amp;airport=40-45-41-61-42-43-48-47&amp;date=11.03.2025-10.03.2026&amp;tripType=80&amp;transport=35&amp;transfer=1&amp;hotelId=872984&amp;reference=040500010d521a4f2f0807001419d64000310100000000</url>
+      </offer>
+      <offer id="165970260" days="8" status="normal">
+        <price currency="CZK">6990</price>
+        <nicePrice>6 990 Kč</nicePrice>
+        <date_from>2025-07-02</date_from>
+        <nice_date_from>2.7.2025</nice_date_from>
+        <date_to>2025-07-09</date_to>
+        <nice_date_to>9.7.2025</nice_date_to>
+        <food>Bez stravy</food>
+        <transport>Letecky</transport>
+        <airport>Praha</airport>
+        <url>https://dovolena.cz/trip-detail?length=1-60&amp;price=1-1000000&amp;cid=23658&amp;adult=2&amp;airport=40-45-41-61-42-43-48-47&amp;date=11.03.2025-10.03.2026&amp;tripType=80&amp;transport=35&amp;transfer=1&amp;hotelId=872984&amp;reference=040500010d521a4f2f0807001419d64100310100000000</url>
+      </offer>
+      <offer id="164084490" days="8" status="normal">
+        <price currency="CZK">6990</price>
+        <nicePrice>6 990 Kč</nicePrice>
+        <date_from>2025-08-22</date_from>
+        <nice_date_from>22.8.2025</nice_date_from>
+        <date_to>2025-08-29</date_to>
+        <nice_date_to>29.8.2025</nice_date_to>
+        <food>Bez stravy</food>
+        <transport>Letecky</transport>
+        <airport>Praha</airport>
+        <url>https://dovolena.cz/trip-detail?length=1-60&amp;price=1-1000000&amp;cid=23658&amp;adult=2&amp;airport=40-45-41-61-42-43-48-47&amp;date=11.03.2025-10.03.2026&amp;tripType=80&amp;transport=35&amp;transfer=1&amp;hotelId=872984&amp;reference=040500010d521a4f620807001419d64100310100000000</url>
+      </offer>
+      <offer id="166565064" days="8" status="normal">
+        <price currency="CZK">6990</price>
+        <nicePrice>6 990 Kč</nicePrice>
+        <date_from>2025-07-04</date_from>
+        <nice_date_from>4.7.2025</nice_date_from>
+        <date_to>2025-07-11</date_to>
+        <nice_date_to>11.7.2025</nice_date_to>
+        <food>Bez stravy</food>
+        <transport>Letecky</transport>
+        <airport>Praha</airport>
+        <url>https://dovolena.cz/trip-detail?length=1-60&amp;price=1-1000000&amp;cid=23658&amp;adult=2&amp;airport=40-45-41-61-42-43-48-47&amp;date=11.03.2025-10.03.2026&amp;tripType=80&amp;transport=35&amp;transfer=1&amp;hotelId=872984&amp;reference=040500010d521a4f310807001419d64100310100000000</url>
+      </offer>
+      <offer id="163783895" days="8" status="normal">
+        <price currency="CZK">7233</price>
+        <nicePrice>7 233 Kč</nicePrice>
+        <date_from>2025-08-20</date_from>
+        <nice_date_from>20.8.2025</nice_date_from>
+        <date_to>2025-08-27</date_to>
+        <nice_date_to>27.8.2025</nice_date_to>
+        <food>Bez stravy</food>
+        <transport>Letecky</transport>
+        <airport>Praha</airport>
+        <url>https://dovolena.cz/trip-detail?length=1-60&amp;price=1-1000000&amp;cid=23658&amp;adult=2&amp;airport=40-45-41-61-42-43-48-47&amp;date=11.03.2025-10.03.2026&amp;tripType=80&amp;transport=35&amp;transfer=1&amp;hotelId=872984&amp;reference=040500010d521a4f600807001419d64000310100000000</url>
+      </offer>
+      <offer id="163783895" days="8" status="normal">
+        <price currency="CZK">7233</price>
+        <nicePrice>7 233 Kč</nicePrice>
+        <date_from>2025-08-20</date_from>
+        <nice_date_from>20.8.2025</nice_date_from>
+        <date_to>2025-08-27</date_to>
+        <nice_date_to>27.8.2025</nice_date_to>
+        <food>Bez stravy</food>
+        <transport>Letecky</transport>
+        <airport>Praha</airport>
+        <url>https://dovolena.cz/trip-detail?length=1-60&amp;price=1-1000000&amp;cid=23658&amp;adult=2&amp;airport=40-45-41-61-42-43-48-47&amp;date=11.03.2025-10.03.2026&amp;tripType=80&amp;transport=35&amp;transfer=1&amp;hotelId=872984&amp;reference=040500010d521a4f600807001419d64100310100000000</url>
+      </offer>
+      <offer id="167312865" days="8" status="normal">
+        <price currency="CZK">8205</price>
+        <nicePrice>8 205 Kč</nicePrice>
+        <date_from>2025-07-09</date_from>
+        <nice_date_from>9.7.2025</nice_date_from>
+        <date_to>2025-07-16</date_to>
+        <nice_date_to>16.7.2025</nice_date_to>
+        <food>Bez stravy</food>
+        <transport>Letecky</transport>
+        <airport>Praha</airport>
+        <url>https://dovolena.cz/trip-detail?length=1-60&amp;price=1-1000000&amp;cid=23658&amp;adult=2&amp;airport=40-45-41-61-42-43-48-47&amp;date=11.03.2025-10.03.2026&amp;tripType=80&amp;transport=35&amp;transfer=1&amp;hotelId=872984&amp;reference=040500010d521a4f360807001419d64000310100000000</url>
+      </offer>
+      <offer id="162739859" days="8" status="normal">
+        <price currency="CZK">8448</price>
+        <nicePrice>8 448 Kč</nicePrice>
+        <date_from>2025-08-15</date_from>
+        <nice_date_from>15.8.2025</nice_date_from>
+        <date_to>2025-08-22</date_to>
+        <nice_date_to>22.8.2025</nice_date_to>
+        <food>Bez stravy</food>
+        <transport>Letecky</transport>
+        <airport>Praha</airport>
+        <url>https://dovolena.cz/trip-detail?length=1-60&amp;price=1-1000000&amp;cid=23658&amp;adult=2&amp;airport=40-45-41-61-42-43-48-47&amp;date=11.03.2025-10.03.2026&amp;tripType=80&amp;transport=35&amp;transfer=1&amp;hotelId=872984&amp;reference=040500010d521a4f5b0807001419d64000310100000000</url>
+      </offer>
+      <offer id="163467933" days="8" status="normal">
+        <price currency="CZK">8690</price>
+        <nicePrice>8 690 Kč</nicePrice>
+        <date_from>2025-07-18</date_from>
+        <nice_date_from>18.7.2025</nice_date_from>
+        <date_to>2025-07-25</date_to>
+        <nice_date_to>25.7.2025</nice_date_to>
+        <food>Bez stravy</food>
+        <transport>Letecky</transport>
+        <airport>Praha</airport>
+        <url>https://dovolena.cz/trip-detail?length=1-60&amp;price=1-1000000&amp;cid=23658&amp;adult=2&amp;airport=40-45-41-61-42-43-48-47&amp;date=11.03.2025-10.03.2026&amp;tripType=80&amp;transport=35&amp;transfer=1&amp;hotelId=872984&amp;reference=040500010d521a4f3f0807001419d64000310100000000</url>
+      </offer>
+      <offer id="164240152" days="8" status="normal">
+        <price currency="CZK">8690</price>
+        <nicePrice>8 690 Kč</nicePrice>
+        <date_from>2025-07-23</date_from>
+        <nice_date_from>23.7.2025</nice_date_from>
+        <date_to>2025-07-30</date_to>
+        <nice_date_to>30.7.2025</nice_date_to>
+        <food>Bez stravy</food>
+        <transport>Letecky</transport>
+        <airport>Praha</airport>
+        <url>https://dovolena.cz/trip-detail?length=1-60&amp;price=1-1000000&amp;cid=23658&amp;adult=2&amp;airport=40-45-41-61-42-43-48-47&amp;date=11.03.2025-10.03.2026&amp;tripType=80&amp;transport=35&amp;transfer=1&amp;hotelId=872984&amp;reference=040500010d521a4f440807001419d64000310100000000</url>
+      </offer>
+      <offer id="162852420" days="8" status="normal">
+        <price currency="CZK">8690</price>
+        <nicePrice>8 690 Kč</nicePrice>
+        <date_from>2025-07-16</date_from>
+        <nice_date_from>16.7.2025</nice_date_from>
+        <date_to>2025-07-23</date_to>
+        <nice_date_to>23.7.2025</nice_date_to>
+        <food>Bez stravy</food>
+        <transport>Letecky</transport>
+        <airport>Praha</airport>
+        <url>https://dovolena.cz/trip-detail?length=1-60&amp;price=1-1000000&amp;cid=23658&amp;adult=2&amp;airport=40-45-41-61-42-43-48-47&amp;date=11.03.2025-10.03.2026&amp;tripType=80&amp;transport=35&amp;transfer=1&amp;hotelId=872984&amp;reference=040500010d521a4f3d0807001419d64000310100000000</url>
+      </offer>
+      <offer id="162150419" days="8" status="normal">
+        <price currency="CZK">8690</price>
+        <nicePrice>8 690 Kč</nicePrice>
+        <date_from>2025-07-11</date_from>
+        <nice_date_from>11.7.2025</nice_date_from>
+        <date_to>2025-07-18</date_to>
+        <nice_date_to>18.7.2025</nice_date_to>
+        <food>Bez stravy</food>
+        <transport>Letecky</transport>
+        <airport>Praha</airport>
+        <url>https://dovolena.cz/trip-detail?length=1-60&amp;price=1-1000000&amp;cid=23658&amp;adult=2&amp;airport=40-45-41-61-42-43-48-47&amp;date=11.03.2025-10.03.2026&amp;tripType=80&amp;transport=35&amp;transfer=1&amp;hotelId=872984&amp;reference=040500010d521a4f380807001419d64000310100000000</url>
+      </offer>
+    </offers>
+  </hotel>
+</hotels>

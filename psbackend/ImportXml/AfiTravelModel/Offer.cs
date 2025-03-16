@@ -8,68 +8,40 @@ using System.Xml.Serialization;
 
 namespace ImportXml.AfiTravelModel
 {
-    public class Offer
+    public class Offer : BaseEntity
     {
         [Key]
-        public Guid Id { get; set; } = Guid.NewGuid();
+        public override Guid Id { get; set; } = Guid.NewGuid();
 
         public Guid CestovkaId { get; set; }
 
-        public Guid OffersId { get; set; } // Cudzie kľúčové pole
+        public Guid HotelId { get; set; } // Cudzie kľúčové pole
+              
+        public Double Price { get; set; }
+        
+        public Double Tax { get; set; }
 
-        [XmlElement("image")]
-        public Image Image { get; set; }
+        public Double TotalPrice { get; set; }
 
-        [XmlArray("photos")] 
-        [XmlArrayItem("photo")]
-        public List<Photo> Photos { get; set; } = new List<Photo>();
+        public Guid CurrencyId { get; set; }
 
-        [XmlElement("destination")]
-        public Destination Destination { get; set; }
+        public Guid FoodId { get; set; }
 
-        [XmlElement("hotel")]
-        public string Hotel { get; set; }
+        public Guid TransportationId { get; set; }
 
-        [XmlElement("term")]
-        public Term Term { get; set; }
-
-        [XmlElement("price")]
-        public PriceDetails Price { get; set; }
-
-        [XmlElement("tax")]
-        public TaxDetails Tax { get; set; }
-
-        [XmlElement("totalprice")]
-        public TotalPriceDetails TotalPrice { get; set; }
-
-        [XmlElement("discount")]
-        public decimal Discount { get; set; }
-
-        [XmlElement("food")]
-        public string Food { get; set; }
-
-        [XmlElement("transportation")]
-        public string Transportation { get; set; }
-
-        [XmlArray("airports")]
-        [XmlArrayItem("airport")]
-        public List<Airports> Airports { get; set; } = new List<Airports>();
-
-        [XmlElement("url")]
         public string Url { get; set; }
 
-        [XmlArray("tourtypes")]
-        [XmlArrayItem("type")]
-        public List<TourType> TourType { get; set; } = new List<TourType>();
+        [MaxLength(50)]
+        public string SOfferId {  get; set; }
 
-        [XmlElement("hotelinfo")]
-        public HotelInfo HotelInfo { get; set; }
+        public DateTime From { get; set; }
 
-        [XmlArray("actionattributes")]
-        [XmlArrayItem("attr")]
-        public List<Actionattributes> Actionattributes { get; set; } = new List<Actionattributes> { };
+        public DateTime To { get; set; }
 
-        [XmlElement("termtype")]
-        public string TermType { get; set; }
+        public int Length { get; set; }
+
+        [MaxLength(10)]
+        public string Discount { get; set; }
+
     }
 }

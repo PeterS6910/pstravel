@@ -22,53 +22,17 @@ namespace ImportXml.Migrations
 
             MySqlModelBuilderExtensions.AutoIncrementColumns(modelBuilder);
 
-            modelBuilder.Entity("ImportXml.AfiTravelModel.Actionattributes", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("char(36)");
-
-                    b.Property<string>("Attr")
-                        .IsRequired()
-                        .HasMaxLength(150)
-                        .HasColumnType("varchar(150)");
-
-                    b.Property<Guid>("OfferId")
-                        .HasColumnType("char(36)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("OfferId");
-
-                    b.ToTable("Actionattributes");
-                });
-
-            modelBuilder.Entity("ImportXml.AfiTravelModel.Airports", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("char(36)");
-
-                    b.Property<string>("Airport")
-                        .IsRequired()
-                        .HasMaxLength(80)
-                        .HasColumnType("varchar(80)");
-
-                    b.Property<Guid>("OfferId")
-                        .HasColumnType("char(36)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("OfferId");
-
-                    b.ToTable("Airports");
-                });
-
             modelBuilder.Entity("ImportXml.AfiTravelModel.Cestovka", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("char(36)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Email")
                         .HasMaxLength(50)
@@ -88,121 +52,366 @@ namespace ImportXml.Migrations
                         .HasMaxLength(80)
                         .HasColumnType("varchar(80)");
 
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime(6)");
+
                     b.HasKey("Id");
 
                     b.ToTable("Cestovka");
                 });
 
-            modelBuilder.Entity("ImportXml.AfiTravelModel.Coords", b =>
+            modelBuilder.Entity("ImportXml.AfiTravelModel.Country", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("char(36)");
 
-                    b.Property<Guid>("HotelInfoId")
-                        .HasColumnType("char(36)");
+                    b.Property<string>("CountryName")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
 
-                    b.Property<double>("Lat")
-                        .HasColumnType("double");
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
 
-                    b.Property<double>("Lng")
-                        .HasColumnType("double");
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<bool?>("IsNajziadanejsia")
+                        .HasColumnType("tinyint(1)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime(6)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("HotelInfoId")
-                        .IsUnique();
-
-                    b.ToTable("Coords");
+                    b.ToTable("Country");
                 });
 
-            modelBuilder.Entity("ImportXml.AfiTravelModel.Destination", b =>
+            modelBuilder.Entity("ImportXml.AfiTravelModel.Currency", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("char(36)");
 
-                    b.Property<string>("Country")
-                        .IsRequired()
-                        .HasMaxLength(80)
-                        .HasColumnType("varchar(80)");
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
 
-                    b.Property<string>("Locality")
+                    b.Property<string>("CurrencyName")
+                        .IsRequired()
+                        .HasMaxLength(3)
+                        .HasColumnType("varchar(3)");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Currency");
+                });
+
+            modelBuilder.Entity("ImportXml.AfiTravelModel.Food", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("FoodName")
+                        .IsRequired()
+                        .HasMaxLength(40)
+                        .HasColumnType("varchar(40)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Food");
+                });
+
+            modelBuilder.Entity("ImportXml.AfiTravelModel.Hotel", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<Guid>("CountryId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<float?>("Latitude")
+                        .HasColumnType("float");
+
+                    b.Property<Guid?>("LocalityId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<float?>("Longitude")
+                        .HasColumnType("float");
+
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(120)
                         .HasColumnType("varchar(120)");
 
-                    b.Property<Guid>("OfferId")
-                        .HasColumnType("char(36)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("OfferId")
-                        .IsUnique();
-
-                    b.ToTable("Destination");
-                });
-
-            modelBuilder.Entity("ImportXml.AfiTravelModel.HotelInfo", b =>
-                {
-                    b.Property<Guid>("HotelInfoId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("char(36)");
-
-                    b.Property<string>("Id")
-                        .IsRequired()
-                        .HasMaxLength(30)
-                        .HasColumnType("varchar(30)");
-
-                    b.Property<Guid>("OfferId")
-                        .HasColumnType("char(36)");
-
-                    b.Property<double?>("Rating")
-                        .HasColumnType("double");
+                    b.Property<float?>("Rating")
+                        .HasColumnType("float");
 
                     b.Property<int?>("RatingCount")
                         .HasColumnType("int");
 
-                    b.Property<int>("Stars")
-                        .HasColumnType("int");
+                    b.Property<double>("Stars")
+                        .HasColumnType("double");
 
-                    b.Property<string>("Url")
-                        .HasMaxLength(150)
-                        .HasColumnType("varchar(150)");
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime(6)");
 
-                    b.HasKey("HotelInfoId");
+                    b.HasKey("Id");
 
-                    b.HasIndex("OfferId")
-                        .IsUnique();
+                    b.HasIndex("CountryId");
 
-                    b.ToTable("HotelInfo");
+                    b.HasIndex("LocalityId");
+
+                    b.ToTable("Hotel");
                 });
 
-            modelBuilder.Entity("ImportXml.AfiTravelModel.Image", b =>
+            modelBuilder.Entity("ImportXml.AfiTravelModel.HotelDetails", b =>
                 {
-                    b.Property<Guid>("OfferId")
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<Guid>("CestovkaId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("longtext");
+
+                    b.Property<Guid>("HotelId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("IdHotelaCestovky")
+                        .IsRequired()
+                        .HasMaxLength(45)
+                        .HasColumnType("varchar(45)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CestovkaId");
+
+                    b.HasIndex("HotelId");
+
+                    b.ToTable("HotelDetails");
+                });
+
+            modelBuilder.Entity("ImportXml.AfiTravelModel.Images", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("char(36)");
 
                     b.Property<string>("Alt")
                         .HasMaxLength(200)
                         .HasColumnType("varchar(200)");
 
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime(6)");
+
                     b.Property<string>("Height")
                         .HasMaxLength(10)
                         .HasColumnType("varchar(10)");
 
+                    b.Property<Guid>("HotelId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime(6)");
+
                     b.Property<string>("Url")
                         .IsRequired()
-                        .HasMaxLength(250)
-                        .HasColumnType("varchar(250)");
+                        .HasMaxLength(150)
+                        .HasColumnType("varchar(150)");
 
                     b.Property<string>("Width")
                         .HasMaxLength(10)
                         .HasColumnType("varchar(10)");
 
-                    b.HasKey("OfferId");
+                    b.HasKey("Id");
+
+                    b.HasIndex("HotelId");
 
                     b.ToTable("Images");
+                });
+
+            modelBuilder.Entity("ImportXml.AfiTravelModel.Job", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
+
+                    b.Property<string>("InputParameters")
+                        .HasColumnType("longtext");
+
+                    b.Property<Guid>("JobCodeId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<Guid>("JobStateId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("varchar(30)");
+
+                    b.Property<DateTime>("ScheduledTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("JobCodeId");
+
+                    b.HasIndex("JobStateId");
+
+                    b.ToTable("Job");
+                });
+
+            modelBuilder.Entity("ImportXml.AfiTravelModel.JobCode", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasMaxLength(5)
+                        .HasColumnType("varchar(5)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("varchar(30)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("JobCode");
+                });
+
+            modelBuilder.Entity("ImportXml.AfiTravelModel.JobState", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<string>("Code")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("varchar(30)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("varchar(30)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("JobState");
+                });
+
+            modelBuilder.Entity("ImportXml.AfiTravelModel.Locality", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<Guid>("CountryId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<string>("LocalityName")
+                        .IsRequired()
+                        .HasMaxLength(80)
+                        .HasColumnType("varchar(80)");
+
+                    b.Property<Guid?>("ParentLocalityId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CountryId");
+
+                    b.HasIndex("ParentLocalityId");
+
+                    b.ToTable("Locality");
                 });
 
             modelBuilder.Entity("ImportXml.AfiTravelModel.Offer", b =>
@@ -214,27 +423,54 @@ namespace ImportXml.Migrations
                     b.Property<Guid>("CestovkaId")
                         .HasColumnType("char(36)");
 
-                    b.Property<decimal>("Discount")
-                        .HasColumnType("decimal(65,30)");
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
 
-                    b.Property<string>("Food")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<string>("Hotel")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<Guid>("OffersId")
+                    b.Property<Guid>("CurrencyId")
                         .HasColumnType("char(36)");
 
-                    b.Property<string>("TermType")
-                        .IsRequired()
-                        .HasColumnType("longtext");
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime(6)");
 
-                    b.Property<string>("Transportation")
+                    b.Property<string>("Discount")
                         .IsRequired()
-                        .HasColumnType("longtext");
+                        .HasMaxLength(10)
+                        .HasColumnType("varchar(10)");
+
+                    b.Property<Guid>("FoodId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<DateTime>("From")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<Guid>("HotelId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<int>("Length")
+                        .HasColumnType("int");
+
+                    b.Property<double>("Price")
+                        .HasColumnType("double");
+
+                    b.Property<string>("SOfferId")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("varchar(50)");
+
+                    b.Property<double>("Tax")
+                        .HasColumnType("double");
+
+                    b.Property<DateTime>("To")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<double>("TotalPrice")
+                        .HasColumnType("double");
+
+                    b.Property<Guid>("TransportationId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<string>("Url")
                         .IsRequired()
@@ -244,211 +480,167 @@ namespace ImportXml.Migrations
 
                     b.HasIndex("CestovkaId");
 
-                    b.HasIndex("OffersId");
+                    b.HasIndex("CurrencyId");
+
+                    b.HasIndex("FoodId");
+
+                    b.HasIndex("HotelId");
+
+                    b.HasIndex("TransportationId");
 
                     b.ToTable("Offer");
                 });
 
-            modelBuilder.Entity("ImportXml.AfiTravelModel.Offers", b =>
+            modelBuilder.Entity("ImportXml.AfiTravelModel.OfferTourTypes", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("char(36)");
 
-                    b.Property<int>("Count")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("Timestamp")
+                    b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime(6)");
 
-                    b.HasKey("Id");
-
-                    b.ToTable("Offers");
-                });
-
-            modelBuilder.Entity("ImportXml.AfiTravelModel.Photo", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("char(36)");
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime(6)");
 
                     b.Property<Guid>("OfferId")
                         .HasColumnType("char(36)");
 
-                    b.Property<string>("Url")
-                        .IsRequired()
-                        .HasMaxLength(150)
-                        .HasColumnType("varchar(150)");
+                    b.Property<Guid>("TourTypesId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime(6)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("OfferId");
 
-                    b.ToTable("Photo");
+                    b.HasIndex("TourTypesId");
+
+                    b.ToTable("OfferTourTypes");
                 });
 
-            modelBuilder.Entity("ImportXml.AfiTravelModel.PriceDetails", b =>
-                {
-                    b.Property<Guid>("OfferId")
-                        .HasColumnType("char(36)");
-
-                    b.Property<string>("Currency")
-                        .HasMaxLength(5)
-                        .HasColumnType("varchar(5)");
-
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(65,30)");
-
-                    b.Property<string>("PriceAsText")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.HasKey("OfferId");
-
-                    b.ToTable("PriceDetails");
-                });
-
-            modelBuilder.Entity("ImportXml.AfiTravelModel.TaxDetails", b =>
-                {
-                    b.Property<Guid>("OfferId")
-                        .HasColumnType("char(36)");
-
-                    b.Property<string>("Currency")
-                        .HasMaxLength(5)
-                        .HasColumnType("varchar(5)");
-
-                    b.Property<string>("PriceAsText")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<decimal>("Tax")
-                        .HasColumnType("decimal(65,30)");
-
-                    b.HasKey("OfferId");
-
-                    b.ToTable("TaxDetails");
-                });
-
-            modelBuilder.Entity("ImportXml.AfiTravelModel.Term", b =>
+            modelBuilder.Entity("ImportXml.AfiTravelModel.TourTypes", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("char(36)");
 
-                    b.Property<DateTime>("From")
+                    b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<int>("Length")
-                        .HasColumnType("int");
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime(6)");
 
-                    b.Property<Guid>("OfferId")
-                        .HasColumnType("char(36)");
+                    b.Property<string>("TourTypesName")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("varchar(30)");
 
-                    b.Property<DateTime>("To")
+                    b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime(6)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("OfferId")
-                        .IsUnique();
-
-                    b.ToTable("Term");
+                    b.ToTable("TourTypes");
                 });
 
-            modelBuilder.Entity("ImportXml.AfiTravelModel.TotalPriceDetails", b =>
-                {
-                    b.Property<Guid>("OfferId")
-                        .HasColumnType("char(36)");
-
-                    b.Property<string>("Currency")
-                        .HasMaxLength(5)
-                        .HasColumnType("varchar(5)");
-
-                    b.Property<decimal>("TotalPrice")
-                        .HasColumnType("decimal(65,30)");
-
-                    b.Property<string>("TotalPriceAsText")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.HasKey("OfferId");
-
-                    b.ToTable("TotalPriceDetails");
-                });
-
-            modelBuilder.Entity("ImportXml.AfiTravelModel.TourType", b =>
+            modelBuilder.Entity("ImportXml.AfiTravelModel.Transport", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("char(36)");
 
-                    b.Property<Guid>("OfferId")
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<Guid?>("ParentTransportId")
                         .HasColumnType("char(36)");
 
-                    b.Property<string>("Type")
+                    b.Property<string>("TransportName")
                         .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("varchar(20)");
+                        .HasMaxLength(30)
+                        .HasColumnType("varchar(30)");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("datetime(6)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("OfferId");
+                    b.HasIndex("ParentTransportId");
 
-                    b.ToTable("TourType");
+                    b.ToTable("Transport");
                 });
 
-            modelBuilder.Entity("ImportXml.AfiTravelModel.Actionattributes", b =>
+            modelBuilder.Entity("ImportXml.AfiTravelModel.Hotel", b =>
                 {
-                    b.HasOne("ImportXml.AfiTravelModel.Offer", null)
-                        .WithMany("Actionattributes")
-                        .HasForeignKey("OfferId")
+                    b.HasOne("ImportXml.AfiTravelModel.Country", null)
+                        .WithMany()
+                        .HasForeignKey("CountryId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("ImportXml.AfiTravelModel.Locality", null)
+                        .WithMany()
+                        .HasForeignKey("LocalityId")
+                        .OnDelete(DeleteBehavior.SetNull);
+                });
+
+            modelBuilder.Entity("ImportXml.AfiTravelModel.HotelDetails", b =>
+                {
+                    b.HasOne("ImportXml.AfiTravelModel.Cestovka", null)
+                        .WithMany()
+                        .HasForeignKey("CestovkaId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ImportXml.AfiTravelModel.Hotel", null)
+                        .WithMany()
+                        .HasForeignKey("HotelId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("ImportXml.AfiTravelModel.Airports", b =>
+            modelBuilder.Entity("ImportXml.AfiTravelModel.Images", b =>
                 {
-                    b.HasOne("ImportXml.AfiTravelModel.Offer", null)
-                        .WithMany("Airports")
-                        .HasForeignKey("OfferId")
+                    b.HasOne("ImportXml.AfiTravelModel.Hotel", null)
+                        .WithMany()
+                        .HasForeignKey("HotelId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("ImportXml.AfiTravelModel.Coords", b =>
+            modelBuilder.Entity("ImportXml.AfiTravelModel.Job", b =>
                 {
-                    b.HasOne("ImportXml.AfiTravelModel.HotelInfo", null)
-                        .WithOne("Coords")
-                        .HasForeignKey("ImportXml.AfiTravelModel.Coords", "HotelInfoId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                    b.HasOne("ImportXml.AfiTravelModel.JobCode", null)
+                        .WithMany()
+                        .HasForeignKey("JobCodeId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("ImportXml.AfiTravelModel.JobState", null)
+                        .WithMany()
+                        .HasForeignKey("JobStateId")
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("ImportXml.AfiTravelModel.Destination", b =>
+            modelBuilder.Entity("ImportXml.AfiTravelModel.Locality", b =>
                 {
-                    b.HasOne("ImportXml.AfiTravelModel.Offer", null)
-                        .WithOne("Destination")
-                        .HasForeignKey("ImportXml.AfiTravelModel.Destination", "OfferId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                    b.HasOne("ImportXml.AfiTravelModel.Country", null)
+                        .WithMany()
+                        .HasForeignKey("CountryId")
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
-                });
 
-            modelBuilder.Entity("ImportXml.AfiTravelModel.HotelInfo", b =>
-                {
-                    b.HasOne("ImportXml.AfiTravelModel.Offer", null)
-                        .WithOne("HotelInfo")
-                        .HasForeignKey("ImportXml.AfiTravelModel.HotelInfo", "OfferId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("ImportXml.AfiTravelModel.Image", b =>
-                {
-                    b.HasOne("ImportXml.AfiTravelModel.Offer", null)
-                        .WithOne("Image")
-                        .HasForeignKey("ImportXml.AfiTravelModel.Image", "OfferId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.HasOne("ImportXml.AfiTravelModel.Locality", null)
+                        .WithMany()
+                        .HasForeignKey("ParentLocalityId")
+                        .OnDelete(DeleteBehavior.SetNull);
                 });
 
             modelBuilder.Entity("ImportXml.AfiTravelModel.Offer", b =>
@@ -459,108 +651,52 @@ namespace ImportXml.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("ImportXml.AfiTravelModel.Offers", null)
-                        .WithMany("Offer")
-                        .HasForeignKey("OffersId")
+                    b.HasOne("ImportXml.AfiTravelModel.Currency", null)
+                        .WithMany()
+                        .HasForeignKey("CurrencyId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("ImportXml.AfiTravelModel.Food", null)
+                        .WithMany()
+                        .HasForeignKey("FoodId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("ImportXml.AfiTravelModel.Hotel", null)
+                        .WithMany()
+                        .HasForeignKey("HotelId")
                         .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ImportXml.AfiTravelModel.Transport", null)
+                        .WithMany()
+                        .HasForeignKey("TransportationId")
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("ImportXml.AfiTravelModel.Photo", b =>
+            modelBuilder.Entity("ImportXml.AfiTravelModel.OfferTourTypes", b =>
                 {
                     b.HasOne("ImportXml.AfiTravelModel.Offer", null)
-                        .WithMany("Photos")
+                        .WithMany()
                         .HasForeignKey("OfferId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("ImportXml.AfiTravelModel.TourTypes", null)
+                        .WithMany()
+                        .HasForeignKey("TourTypesId")
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("ImportXml.AfiTravelModel.PriceDetails", b =>
+            modelBuilder.Entity("ImportXml.AfiTravelModel.Transport", b =>
                 {
-                    b.HasOne("ImportXml.AfiTravelModel.Offer", null)
-                        .WithOne("Price")
-                        .HasForeignKey("ImportXml.AfiTravelModel.PriceDetails", "OfferId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("ImportXml.AfiTravelModel.TaxDetails", b =>
-                {
-                    b.HasOne("ImportXml.AfiTravelModel.Offer", null)
-                        .WithOne("Tax")
-                        .HasForeignKey("ImportXml.AfiTravelModel.TaxDetails", "OfferId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("ImportXml.AfiTravelModel.Term", b =>
-                {
-                    b.HasOne("ImportXml.AfiTravelModel.Offer", null)
-                        .WithOne("Term")
-                        .HasForeignKey("ImportXml.AfiTravelModel.Term", "OfferId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("ImportXml.AfiTravelModel.TotalPriceDetails", b =>
-                {
-                    b.HasOne("ImportXml.AfiTravelModel.Offer", null)
-                        .WithOne("TotalPrice")
-                        .HasForeignKey("ImportXml.AfiTravelModel.TotalPriceDetails", "OfferId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("ImportXml.AfiTravelModel.TourType", b =>
-                {
-                    b.HasOne("ImportXml.AfiTravelModel.Offer", null)
-                        .WithMany("TourType")
-                        .HasForeignKey("OfferId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("ImportXml.AfiTravelModel.HotelInfo", b =>
-                {
-                    b.Navigation("Coords")
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("ImportXml.AfiTravelModel.Offer", b =>
-                {
-                    b.Navigation("Actionattributes");
-
-                    b.Navigation("Airports");
-
-                    b.Navigation("Destination")
-                        .IsRequired();
-
-                    b.Navigation("HotelInfo")
-                        .IsRequired();
-
-                    b.Navigation("Image")
-                        .IsRequired();
-
-                    b.Navigation("Photos");
-
-                    b.Navigation("Price")
-                        .IsRequired();
-
-                    b.Navigation("Tax")
-                        .IsRequired();
-
-                    b.Navigation("Term")
-                        .IsRequired();
-
-                    b.Navigation("TotalPrice")
-                        .IsRequired();
-
-                    b.Navigation("TourType");
-                });
-
-            modelBuilder.Entity("ImportXml.AfiTravelModel.Offers", b =>
-                {
-                    b.Navigation("Offer");
+                    b.HasOne("ImportXml.AfiTravelModel.Transport", null)
+                        .WithMany()
+                        .HasForeignKey("ParentTransportId")
+                        .OnDelete(DeleteBehavior.SetNull);
                 });
 #pragma warning restore 612, 618
         }
