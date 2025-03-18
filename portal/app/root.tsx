@@ -1,16 +1,18 @@
 import {
     Links,
     Meta,
-    //Outlet,
+    Outlet,
     Scripts,
     ScrollRestoration,
 } from "@remix-run/react";
 import type { LinksFunction } from "@remix-run/node";
 
+/*
 import Footer from './Components/Footer/Footer'
 import Home from './Components/Home/Home'
 import Main from './Components/Main/Main'
 import Navbar from './Components/Navbar/Navbar'
+*/
 import './app.css'
 
 import "./tailwind.css";
@@ -47,13 +49,12 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 
-/*
 export default function App1() {
     return <Outlet />;
 }
-*/
 
-export default function App () {
+/*
+export default function App1 () {
     return (
         <>
             <Navbar />
@@ -63,3 +64,4 @@ export default function App () {
         </>
     )
 }
+*/
