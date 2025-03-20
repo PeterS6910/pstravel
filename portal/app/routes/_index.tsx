@@ -4,7 +4,6 @@ import Home from '~/Components/Home/Home'
 import Main from '~/Components/Main/Main'
 import Navbar from '~/Components/Navbar/Navbar'
 import { LocalityCheckboxTreeNode, getLocalityCheckBoxTree } from '~/back/locality'
-import InputLocalityTreeSearch from '~/Components/InputLocalityTreeSearch/InputLocalityTreeSearch'
 
 import { type MetaFunction } from "@remix-run/node";
 
@@ -27,8 +26,8 @@ export const loader = async (/*args: LoaderFunctionArgs*/) => {
     try {
         let loclityCheckboxTree = await getLocalityCheckBoxTree();
         //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-        console.log(`${FILE}:${FUNC}: @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ loclityCheckboxTree:`, loclityCheckboxTree);
-        console.dir(loclityCheckboxTree, { depth: null });
+        //console.log(`${FILE}:${FUNC}: @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ loclityCheckboxTree:`, loclityCheckboxTree);
+        //console.dir(loclityCheckboxTree, { depth: null });
         //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
         let loaderData: ILoaderData = {
             loclityCheckboxTree: loclityCheckboxTree
@@ -42,21 +41,15 @@ export const loader = async (/*args: LoaderFunctionArgs*/) => {
 
 export default function Index() {
     const loaderData = useLoaderData<typeof loader>();
-    const nodes = loaderData.loclityCheckboxTree;
+    const loclityCheckboxTree = loaderData.loclityCheckboxTree;
 
 
     return (
         <>
             <Navbar />
-            <Home />
+            <Home loclityCheckboxTree={loclityCheckboxTree} />
             <Main />
             <Footer />
-            <InputLocalityTreeSearch
-                treeData={nodes}
-                onChange={(selectedValues: string[]) => {
-                    console.log('selectedValues:', selectedValues);
-                }}
-            />
 
         </>
     );

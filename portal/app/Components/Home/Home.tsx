@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import React  from 'react';
 import './home.css'
 //import video from '../../Assets/video.mp4'
 import { GrLocation } from 'react-icons/gr'
@@ -11,7 +12,14 @@ import { TbApps } from 'react-icons/tb'
 import Aos from 'aos'
 import 'aos/dist/aos.css'
 
-const Home = () => {
+import InputLocalityTreeSearch  from '~/Components/InputLocalityTreeSearch/InputLocalityTreeSearch'
+import { LocalityCheckboxTreeNode } from '~/back/locality'
+
+interface HomeProps {
+	loclityCheckboxTree: LocalityCheckboxTreeNode[];
+}
+
+const Home: React.FC<HomeProps> = ({ loclityCheckboxTree }) => {
     useEffect(() => {
         Aos.init({ duration: 2000 })
     }, [])
@@ -38,6 +46,12 @@ const Home = () => {
                         <div className="input flex">
                             <input type="text" placeholder='Enter name here...' />
                             <GrLocation className="icon" />
+                            <InputLocalityTreeSearch
+                                treeData={loclityCheckboxTree}
+                                onChange={(selectedValues: string[]) => {
+                                    console.log('selectedValues:', selectedValues);
+                                }}
+                            />
                         </div>
                     </div>
 
