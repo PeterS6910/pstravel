@@ -1,10 +1,13 @@
-import { type MetaFunction } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import Footer from '~/Components/Footer/Footer'
 import Home from '~/Components/Home/Home'
 import Main from '~/Components/Main/Main'
 import Navbar from '~/Components/Navbar/Navbar'
 import { LocalityCheckboxTreeNode, getLocalityCheckBoxTree } from '~/back/locality'
+import InputLocalityTreeSearch from '~/Components/InputLocalityTreeSearch/InputLocalityTreeSearch'
+
+import { type MetaFunction } from "@remix-run/node";
+
 
 const FILE = "routes/_index.tsx";
 
@@ -38,14 +41,23 @@ export const loader = async (/*args: LoaderFunctionArgs*/) => {
 };
 
 export default function Index() {
-    const data = useLoaderData<typeof loader>();
+    const loaderData = useLoaderData<typeof loader>();
+    const nodes = loaderData.loclityCheckboxTree;
+
+
     return (
         <>
             <Navbar />
             <Home />
             <Main />
             <Footer />
-            <pre>{JSON.stringify(data, null, 2)}</pre>
+            <InputLocalityTreeSearch
+                treeData={nodes}
+                onChange={(selectedValues: string[]) => {
+                    console.log('selectedValues:', selectedValues);
+                }}
+            />
+
         </>
     );
 }

@@ -15,6 +15,13 @@ interface ILocality {
 	localityName: string;
 }
 
+export interface LocalityCheckboxTreeNode {
+	value: string;
+	label: string;
+    isCountry: boolean;
+	children: LocalityCheckboxTreeNode[];
+}
+
 
 async function getContries(): Promise<ICountry[]> {
 	const FUNC = 'readContries()';
@@ -66,12 +73,6 @@ async function getLocalities(): Promise<ILocality[]> {
 	}
 }
 
-export interface LocalityCheckboxTreeNode {
-	value: string;
-	label: string;
-    isCountry: boolean;
-	children: LocalityCheckboxTreeNode[];
-}
 
 export async function getLocalityCheckBoxTree(): Promise<LocalityCheckboxTreeNode[]> {
 	
