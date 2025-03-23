@@ -1,0 +1,46 @@
+.locality-tree-search-input .locality-select-tag .container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    /* spacing between tags */
+    max-width: 600px;
+    /* adjust to fit your layout */
+    margin: 1rem auto;
+    /* center and add vertical spacing */
+    padding: 0.5rem;
+    background-color: #fff;
+    /* or a semi-transparent overlay if you have a background image */
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.locality-tree-search-input .locality-select-tag .container .tag {
+    display: flex;
+    align-items: center;
+    background-color: #00a2c7;
+    /* a teal/blue color to match a travel/ocean theme */
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 16px;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.locality-tree-search-input .locality-select-tag .container .tag-text {
+    margin-right: 0.5rem;
+}
+
+.locality-tree-search-input .locality-select-tag .container .tag-delete {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.1rem;
+    cursor: pointer;
+    margin-left: 0.25rem;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.locality-tree-search-input .locality-select-tag .container .tag-delete:hover {
+    opacity: 0.7;
+}

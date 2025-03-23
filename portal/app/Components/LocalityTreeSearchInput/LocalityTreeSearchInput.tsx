@@ -1,12 +1,14 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { LocalityCheckboxTreeNode } from '../../back/locality';
+import  LocalitySelectTag  from './LocalitySelectTag';
 
-interface InputLocalityTreeSearchProps {
+interface LocalityTreeSearchInputProps {
 	treeData: LocalityCheckboxTreeNode[];
 	onChange?: (selectedValues: string[]) => void;
 }
 
-const InputLocalityTreeSearch: React.FC<InputLocalityTreeSearchProps> = ({ treeData, onChange }) => {
+
+const LocalityTreeSearchInput: React.FC<LocalityTreeSearchInputProps> = ({ treeData, onChange }) => {
 	const [selectedValues, setSelectedValues] = useState<string[]>([]);
 	const [dropdownOpen, setDropdownOpen] = useState(false);
 	const containerRef = useRef<HTMLDivElement>(null);
@@ -74,6 +76,7 @@ const InputLocalityTreeSearch: React.FC<InputLocalityTreeSearchProps> = ({ treeD
 
 	return (
 		<div ref={containerRef} style={{ position: 'relative', display: 'inline-block', width: 300 }}>
+        {/*
 			<input
 				type="text"
 				readOnly
@@ -82,6 +85,11 @@ const InputLocalityTreeSearch: React.FC<InputLocalityTreeSearchProps> = ({ treeD
 				onClick={() => setDropdownOpen((prev) => !prev)}
 				style={{ width: '100%', padding: '6px 8px', boxSizing: 'border-box' }}
 			/>
+            */}
+            <LocalitySelectTag values={ selectedValues.map( v => { return {value: v, label: getLabelForValue(v, treeData)}})} 
+                                onChange={setSelectedValues} 
+				                onClick={() => setDropdownOpen((prev) => !prev)}
+            />
 			{dropdownOpen && (
 				<div
 					style={{
@@ -103,4 +111,4 @@ const InputLocalityTreeSearch: React.FC<InputLocalityTreeSearchProps> = ({ treeD
 	);
 };
 
-export default InputLocalityTreeSearch;
+export default LocalityTreeSearchInput;

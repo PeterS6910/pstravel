@@ -12,7 +12,7 @@ import { TbApps } from 'react-icons/tb'
 import Aos from 'aos'
 import 'aos/dist/aos.css'
 
-import InputLocalityTreeSearch  from '~/Components/InputLocalityTreeSearch/InputLocalityTreeSearch'
+import LocalityTreeSearchInput  from '~/Components/LocalityTreeSearchInput/LocalityTreeSearchInput'
 import { LocalityCheckboxTreeNode } from '~/back/locality'
 
 interface HomeProps {
@@ -46,7 +46,7 @@ const Home: React.FC<HomeProps> = ({ loclityCheckboxTree }) => {
                         <div className="input flex">
                             <input type="text" placeholder='Enter name here...' />
                             <GrLocation className="icon" />
-                            <InputLocalityTreeSearch
+                            <LocalityTreeSearchInput
                                 treeData={loclityCheckboxTree}
                                 onChange={(selectedValues: string[]) => {
                                     console.log('selectedValues:', selectedValues);
