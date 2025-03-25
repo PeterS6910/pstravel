@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { LocalityCheckboxTreeNode } from '../../back/locality';
 import  LocalitySelectTag  from './LocalitySelectTag';
+import styles from './LocalityTreeSearchInput.module.css';
 
 interface LocalityTreeSearchInputProps {
 	treeData: LocalityCheckboxTreeNode[];
@@ -75,7 +76,7 @@ const LocalityTreeSearchInput: React.FC<LocalityTreeSearchInputProps> = ({ treeD
 	}, [dropdownOpen]);
 
 	return (
-		<div ref={containerRef} style={{ position: 'relative', display: 'inline-block', width: 300 }}>
+		<div ref={containerRef} className={ styles['main-container'] }>
         {/*
 			<input
 				type="text"
