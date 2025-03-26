@@ -1,7 +1,7 @@
-:root{
+:root {
     --PrimaryColor: hsl(199, 100%, 33%);
     --SecondaryColor: hsl(187, 85%, 43%);
-    --gradientColor: linear-gradient(to right, hsl(187, 85%, 43%),hsl(199, 100%, 33%));
+    --gradientColor: linear-gradient(to right, hsl(187, 85%, 43%), hsl(199, 100%, 33%));
     --whiteColor: hsl(0, 0%, 100%);
     --textColor: hsl(240, 4%, 36%);
     --whiteColorDeam: hsl(0, 0%, 93%);
@@ -9,15 +9,15 @@
     --inputColor: rgb(239, 239, 239);
 }
 
-.home{
+.home {
     width: 100%;
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
     margin: auto;
-    
-    .overlay{
+
+    .overlay {
         position: absolute;
         height: 100%;
         width: 100%;
@@ -28,7 +28,7 @@
         z-index: 1;
     }
 
-    video{
+    video {
         position: absolute;
         height: 100%;
         width: 100%;
@@ -37,7 +37,7 @@
         object-fit: cover;
     }
 
-    .homeContent{
+    .homeContent {
         width: 100%;
         height: max-content;
         padding: 8rem 1.5rem 3rem;
@@ -50,27 +50,28 @@
         color: var(--whiteColor);
         z-index: 100;
 
-       .textDiv{
-        padding: 2rem e0;
-        .smallText{
-            font-size: 13px;
-            text-transform: uppercase;
-        } 
+        .textDiv {
+            padding: 2rem e0;
 
-        .homeTitle{
-            position: relative;
-            font-size: 1.8rem;
+            .smallText {
+                font-size: 13px;
+                text-transform: uppercase;
+            }
+
+            .homeTitle {
+                position: relative;
+                font-size: 1.8rem;
+            }
         }
-       }
 
-       .cardDiv{
+        .cardDiv {
             position: relative;
             padding: 2rem 1rem;
             background: var(--whiteColor);
             border-radius: 10px;
             gap: 1rem;
 
-            label{
+            label {
                 display: block;
                 color: var(--textColor);
                 padding-bottom: 10px;
@@ -78,49 +79,50 @@
                 font-weight: 500;
             }
 
-            .label_total{
+            .label_total {
                 justify-content: space-between;
                 align-items: center;
-                .total{
+
+                .total {
                     color: var(--textColor);
                     font-size: 18px;
                     padding-bottom: 10px;
                 }
             }
 
-        .input{
-            height: 40px;
-            padding: 0 1rem;
-            background: var(--inputColor);
-            border-radius: 3rem;
-         
-            
-            input{
-                background: none;
-                border: none;
-                outline: none;
-                width: 100%;
-                font-size: 13px;
-                font-weight: 500;
-                &::placeholder{
+            .input {
+                height: 40px;
+                padding: 0 1rem;
+                background: var(--inputColor);
+                border-radius: 3rem;
+
+
+                input {
+                    background: none;
+                    border: none;
+                    outline: none;
+                    width: 100%;
                     font-size: 13px;
+                    font-weight: 500;
+
+                    &::placeholder {
+                        font-size: 13px;
+                    }
+                }
+
+                .icon {
+                    font-size: 18px;
+                    color: var(--PrimaryColor) !important;
+                    margin-left: 10px;
+                }
+
+
+                input[type=range] {
+                    background: blue;
                 }
             }
 
-            .icon{
-                font-size: 18px;
-                color: var(--PrimaryColor) !important;
-                margin-left: 10px;
-            }
-
-
-            input[type=range]{
-                background: blue;
-            }
-        }    
-           
-
-            .searchOptions{
+            .searchOptions {
                 position: absolute;
                 background: var(--gradientColor);
                 width: max-content;
@@ -131,30 +133,37 @@
                 left: 50%;
                 transform: translate(-50%);
                 justify-content: center;
-                &:hover{
+
+                &:hover {
                     background: var(--PrimaryColor);
                 }
 
-                .icon{
+                .icon {
                     font-size: 18px;
                 }
 
-                span{
+                span {
                     font-size: 13px;
 
                 }
             }
         }
 
-        .homeFooterIcons{
+        .cardDiv.grid {
+            align-items: start;
+        }
+
+        .homeFooterIcons {
             width: 100%;
             justify-content: space-between;
-            .icon{
+
+            .icon {
                 font-size: 20px;
                 margin: 0 5px;
                 color: var(--whiteColor);
                 font-weight: 600;
-                &:hover{
+
+                &:hover {
                     color: var(--PrimaryColor);
                 }
 
@@ -164,20 +173,20 @@
 }
 
 //MEDIA QUERIES ==========================================>
-@media screen and (min-width: 500px){
-   .home{
-        .homeContent{
-            .textDiv{
-                .smallText{
+@media screen and (min-width: 500px) {
+    .home {
+        .homeContent {
+            .textDiv {
+                .smallText {
                     font-size: 16px;
-                } 
-    
-                .homeTitle{
+                }
+
+                .homeTitle {
                     position: relative;
                     font-size: 2.3rem;
                     width: max-content;
-                    
-                    &::after{
+
+                    &::after {
                         position: absolute;
                         content: '';
                         background: var(--SecondaryColor);
@@ -189,67 +198,72 @@
                     }
                 }
             }
-    
-    
-        .cardDiv{
-            grid-template-columns: repeat(2,1fr);
+
+
+            .cardDiv {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
         }
-        
-        }
-   }
+    }
 }
 
 @media screen and (min-width: 660px) {
-    .home{
-        .homeContent{
-            .cardDiv{
+    .home {
+        .homeContent {
+            .cardDiv {
                 padding: 2rem 1rem;
-                grid-template-columns: repeat(3,1fr);
+                grid-template-columns: repeat(3, 1fr);
             }
         }
-   }
+    }
 }
 
 
-@media screen and (min-width: 940px){
-   .home{
+@media screen and (min-width: 940px) {
+    .home {
         height: 70vh;
     }
 }
 
-@media screen and (min-width: 1024px){
-    .home{
+@media screen and (min-width: 1024px) {
+    .home {
         height: 80vh;
-        .homeContent{
+
+        .homeContent {
             padding-left: 0;
             padding-right: 0;
-            .cardDiv{
+
+            .cardDiv {
                 padding: 2rem 1rem;
-                grid-template-columns: repeat(3,1fr);
+                grid-template-columns: repeat(3, 1fr);
             }
         }
     }
 }
 
 
-@media screen and (min-width: 1240px){
-    .home{
+@media screen and (min-width: 1240px) {
+    .home {
         height: 95vh;
-        .homeContent{
+
+        .homeContent {
             padding-left: 0;
             padding-right: 0;
-            .cardDiv{
-                padding: 2rem ;
-                grid-template-columns: repeat(3,1fr);
-                .input{
+
+            .cardDiv {
+                padding: 2rem;
+                grid-template-columns: repeat(3, 1fr);
+
+                .input {
                     margin-bottom: 1rem;
                 }
 
-                .searchOptions{
+                .searchOptions {
                     bottom: -1rem;
                     padding: 8px 1rem;
-                  
-                    span{
+
+                    span {
                         font-size: 17px;
                     }
                 }

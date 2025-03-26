@@ -42,10 +42,14 @@ const Home: React.FC<HomeProps> = ({ loclityCheckboxTree }) => {
 
                 <div data-aos="fade-down" className="cardDiv grid">
                     <div className="destinationInput">
-                        <label htmlFor="city">Search your destination:</label>
-                        <div className="input flex">
-                            <input type="text" placeholder='Enter name here...' />
-                            <GrLocation className="icon" />
+                        <div>
+                            <label htmlFor="city">Search your destination:</label>
+                            <div className="input flex">
+                                <input type="text" placeholder='Enter name here...' />
+                                <GrLocation className="icon" />
+                            </div>
+                        </div>
+                        <div>
                             <LocalityTreeSearchInput
                                 treeData={loclityCheckboxTree}
                                 onChange={(selectedValues: string[]) => {

@@ -1,7 +1,7 @@
 :root {
   --PrimaryColor: hsl(199, 100%, 33%);
   --SecondaryColor: hsl(187, 85%, 43%);
-  --gradientColor: linear-gradient(to right, hsl(187, 85%, 43%),hsl(199, 100%, 33%));
+  --gradientColor: linear-gradient(to right, hsl(187, 85%, 43%), hsl(199, 100%, 33%));
   --whiteColor: hsl(0, 0%, 100%);
   --textColor: hsl(240, 4%, 36%);
   --whiteColorDeam: hsl(0, 0%, 93%);
@@ -127,6 +127,9 @@
 }
 .home .homeContent .cardDiv .searchOptions span {
   font-size: 13px;
+}
+.home .homeContent .cardDiv.grid {
+  align-items: start;
 }
 .home .homeContent .homeFooterIcons {
   width: 100%;
