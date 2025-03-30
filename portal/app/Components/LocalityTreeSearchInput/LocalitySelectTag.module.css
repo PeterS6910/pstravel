@@ -3,23 +3,18 @@
     flex-wrap: wrap;
     align-items: center;
     gap: 0.5rem;
-    /* spacing between tags */
     max-width: 600px;
-    /* adjust to fit your layout */
-    margin: 1rem auto;
-    /* center and add vertical spacing */
-    padding: 0.5rem;
+    min-height: 40px;
+    padding: 0.3rem;
     background-color: #fff;
-    /* or a semi-transparent overlay if you have a background image */
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ccc;
+    border-bottom-width: 0px;
 }
 
 .container__tag {
     display: flex;
     align-items: center;
     background-color: #00a2c7;
-    /* a teal/blue color to match a travel/ocean theme */
     color: #fff;
     padding: 0.5rem 1rem;
     border-radius: 16px;

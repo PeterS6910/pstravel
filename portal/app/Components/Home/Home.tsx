@@ -1,5 +1,5 @@
-import { useEffect } from 'react'
-import React  from 'react';
+import { useEffect, useState } from 'react'
+import React from 'react';
 import './home.css'
 //import video from '../../Assets/video.mp4'
 import { GrLocation } from 'react-icons/gr'
@@ -9,20 +9,26 @@ import { AiOutlineInstagram } from 'react-icons/ai'
 import { SiTripadvisor } from 'react-icons/si'
 import { BsListTask } from 'react-icons/bs'
 import { TbApps } from 'react-icons/tb'
-import Aos from 'aos'
-import 'aos/dist/aos.css'
+//import Aos from 'aos'
+//import 'aos/dist/aos.css'
 
-import LocalityTreeSearchInput  from '~/Components/LocalityTreeSearchInput/LocalityTreeSearchInput'
+import LocalityTreeSearchInput from '~/Components/LocalityTreeSearchInput/LocalityTreeSearchInput'
 import { LocalityCheckboxTreeNode } from '~/back/locality'
 
 interface HomeProps {
-	loclityCheckboxTree: LocalityCheckboxTreeNode[];
+    loclityCheckboxTree: LocalityCheckboxTreeNode[];
 }
 
 const Home: React.FC<HomeProps> = ({ loclityCheckboxTree }) => {
+
+    const [displayLocalityTree, setDisplayLocalityTree] = useState(false);
+
+    /*
     useEffect(() => {
         Aos.init({ duration: 2000 })
     }, [])
+    */
+
     return (
         <section id='home' className='home'>
             <div className="overlay"></div>
@@ -30,33 +36,37 @@ const Home: React.FC<HomeProps> = ({ loclityCheckboxTree }) => {
                 <source src="Assets/video.mp4" type="video/mp4" />
             </video>
 
-            <div data-aos="fade-down" className="homeContent container">
+            {/*<div data-aos="fade-down" className="homeContent container">*/}
+            <div className="homeContent container">
                 <div className="textDiv">
                     <span className="smallText">
                         Our Packages
                     </span>
-                    <h1 data-aos="fade-down" className="homeTitle">
+                    {/*<h1 data-aos="fade-down" className="homeTitle">*/}
+                    <h1 className="homeTitle">
                         Search your Holiday
                     </h1>
                 </div>
 
-                <div data-aos="fade-down" className="cardDiv grid">
+                {/*<div data-aos="fade-down" className="cardDiv grid">*/}
+                <div className="cardDiv grid">
                     <div className="destinationInput">
                         <div>
                             <label htmlFor="city">Search your destination:</label>
                             <div className="input flex">
-                                <input type="text" placeholder='Enter name here...' />
+                                <input type="text" placeholder='Enter name here...' onClick={() => setDisplayLocalityTree(!displayLocalityTree)} />
                                 <GrLocation className="icon" />
                             </div>
                         </div>
-                        <div>
+                        {displayLocalityTree && <div className="localitySearchDialog">
                             <LocalityTreeSearchInput
                                 treeData={loclityCheckboxTree}
+                                closeComponentCb={() => setDisplayLocalityTree(false)}
                                 onChange={(selectedValues: string[]) => {
                                     console.log('selectedValues:', selectedValues);
                                 }}
                             />
-                        </div>
+                        </div>}
                     </div>
 
 
@@ -85,7 +95,8 @@ const Home: React.FC<HomeProps> = ({ loclityCheckboxTree }) => {
                     </div>
                 </div>
 
-                <div data-aos="fade-up" className="homeFooterIcons flex">
+                {/*<div data-aos="fade-up" className="homeFooterIcons flex"> */}
+                <div className="homeFooterIcons flex"> 
                     <div className="rightIcons">
                         <FiFacebook className="icon" />
                         <AiOutlineInstagram className="icon" />

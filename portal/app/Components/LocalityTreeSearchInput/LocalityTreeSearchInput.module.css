@@ -1,5 +1,14 @@
-.main-container { 
-    position: relative; 
-    display: inline-block; 
-    width: 300px; 
+.mainContainer {
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+}
+
+.selectContainer {
+    background: white;
+    border: 1px solid #ccc;
+    padding: 10px;
+    max-height: 300px;
+    overflow-y: auto;
+    width: 100%;
 }

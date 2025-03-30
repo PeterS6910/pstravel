@@ -5,13 +5,14 @@ import styles from './LocalityTreeSearchInput.module.css';
 
 interface LocalityTreeSearchInputProps {
 	treeData: LocalityCheckboxTreeNode[];
+    closeComponentCb: () => void;
 	onChange?: (selectedValues: string[]) => void;
 }
 
 
-const LocalityTreeSearchInput: React.FC<LocalityTreeSearchInputProps> = ({ treeData, onChange }) => {
+const LocalityTreeSearchInput: React.FC<LocalityTreeSearchInputProps> = ({ treeData, onChange, closeComponentCb }) => {
+
 	const [selectedValues, setSelectedValues] = useState<string[]>([]);
-	const [dropdownOpen, setDropdownOpen] = useState(false);
 	const containerRef = useRef<HTMLDivElement>(null);
 
 	// Toggle the selection of a node
@@ -65,49 +66,43 @@ const LocalityTreeSearchInput: React.FC<LocalityTreeSearchInputProps> = ({ treeD
 	// Close dropdown if clicking outside
 	useEffect(() => {
 		const handleClickOutside = (event: MouseEvent) => {
-			if (dropdownOpen && containerRef.current && !containerRef.current.contains(event.target as Node)) {
-				setDropdownOpen(false);
+            console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ cp 400: event.target:'); // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+            console.dir(event.target); // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+			if (containerRef.current && !containerRef.current.contains(event.target as Node)) {
+                console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ cp 410: closed'); // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+                closeComponentCb();
 			}
 		};
-		document.addEventListener('mousedown', handleClickOutside);
+        // true - catch the click  event in the capturing phase otherwis if event targed is contained element we risk that radrawing of react will remove the element 
+        // and thus element will not be caontained which will cause unwanted closing of the dialog (this was happening when deleteing the last selected locality tag,
+		document.addEventListener('click', handleClickOutside, true); 
 		return () => {
-			document.removeEventListener('mousedown', handleClickOutside);
+			document.removeEventListener('click', handleClickOutside);
 		};
-	}, [dropdownOpen]);
+	}, []);
 
-	return (
-		<div ref={containerRef} className={ styles['main-container'] }>
-        {/*
-			<input
-				type="text"
-				readOnly
-				value={selectedValues.map((val) => getLabelForValue(val, treeData)).join(', ')}
-				placeholder="Select localities"
-				onClick={() => setDropdownOpen((prev) => !prev)}
-				style={{ width: '100%', padding: '6px 8px', boxSizing: 'border-box' }}
-			/>
-            */}
+	return ( 
+		<div ref={containerRef} className={ styles.mainContainer }>
             <LocalitySelectTag values={ selectedValues.map( v => { return {value: v, label: getLabelForValue(v, treeData)}})} 
                                 onChange={setSelectedValues} 
-				                onClick={() => setDropdownOpen((prev) => !prev)}
+				                onClick={() => {}}
             />
-			{dropdownOpen && (
-				<div
-					style={{
-						position: 'absolute',
-						zIndex: 1000,
-						background: 'white',
-						border: '1px solid #ccc',
-						padding: 10,
-						marginTop: 2,
-						maxHeight: 300,
-						overflowY: 'auto',
-						width: '100%',
-					}}
-				>
-					{renderTreeNodes(treeData)}
-				</div>
-			)}
+            {/*
+            <div
+                style={{
+                    border: '1px solid #ccc',
+                    padding: 10,
+                    marginTop: 2,
+                    maxHeight: 300,
+                    overflowY: 'auto',
+                    width: '100%',
+                }}
+            >
+            */}
+            <div  className={styles.selectContainer}
+            >
+                {renderTreeNodes(treeData)}
+            </div>
 		</div>
 	);
 };

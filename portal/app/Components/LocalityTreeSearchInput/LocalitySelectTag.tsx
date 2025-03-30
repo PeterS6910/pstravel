@@ -24,7 +24,7 @@ const LocalitySelectTag: React.FC<LocalitySelectTagProps> = ({ values, onChange,
 
 				<div key={ index } className={ styles.container__tag }>
 					<span className={ styles.container__tagText}> { tag.label   } </span>
-					<button className={ styles.container__tagDelete } onClick={() => handleDelete(tag)}> &times; </button>
+					<button className={ styles.container__tagDelete } onClick={(e) => {e.stopPropagation(); handleDelete(tag);}}> &times; </button>
 				</div>
 
 			))}
