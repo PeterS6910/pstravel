@@ -15,11 +15,10 @@ const LocalityTreeSearchInput: React.FC<LocalityTreeSearchInputProps> = ({
     closeComponentCb,
 }) => {
     const [selectedValues, setSelectedValues] = useState<string[]>([]);
-    // Mapping from node value to its visible expanded state.
     const [expandedMap, setExpandedMap] = useState<Record<string, boolean>>({});
     const containerRef = useRef<HTMLDivElement>(null);
 
-    // Helper: recursively gather all descendant values of a node.
+    // Recursively gather all descendant values of a node.
     const getDescendantValues = (node: LocalityCheckboxTreeNode): string[] => {
         let values: string[] = [];
         if (node.children && node.children.length > 0) {
@@ -38,12 +37,12 @@ const LocalityTreeSearchInput: React.FC<LocalityTreeSearchInputProps> = ({
             const descendantValues = getDescendantValues(node);
             let newValues: string[];
             if (isChecked) {
-                // Uncheck: remove the node and all its descendants.
+                // Uncheck this node and all its descendants.
                 newValues = prev.filter(
                     (val) => val !== node.value && !descendantValues.includes(val)
                 );
             } else {
-                // Check: add the node and all its descendants.
+                // Check this node and all its descendants.
                 newValues = Array.from(new Set([...prev, node.value, ...descendantValues]));
             }
             return newValues;
@@ -55,7 +54,6 @@ const LocalityTreeSearchInput: React.FC<LocalityTreeSearchInputProps> = ({
         setExpandedMap((prev) => ({ ...prev, [nodeValue]: !prev[nodeValue] }));
     };
 
-    // Notify parent of selection changes.
     useEffect(() => {
         if (onChange) {
             onChange(selectedValues);
@@ -74,26 +72,20 @@ const LocalityTreeSearchInput: React.FC<LocalityTreeSearchInputProps> = ({
         return '';
     };
 
-    // Render the tree recursively.
+    // Render the tree recursively using the same label rendering as before.
     const renderTreeNodes = (nodes: LocalityCheckboxTreeNode[], level: number = 0) => {
         return nodes.map((node) => (
-            <React.Fragment key={node.value}>
-                <div
-                    style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        paddingLeft: level * 20,
-                        margin: '4px 0',
-                    }}
-                >
-                    <input
-                        type="checkbox"
-                        checked={selectedValues.includes(node.value)}
-                        onChange={() => handleCheckboxChange(node)}
-                        style={{ marginRight: 4 }}
-                    />
-                    <span>{node.label}</span>
-                    {/* Render triangle if node has children */}
+            <div key={node.value} style={{ paddingLeft: level * 20, margin: '4px 0' }}>
+                <div style={{ display: 'flex', alignItems: 'center' }}>
+                    <label style={{ cursor: 'pointer' }}>
+                        <input
+                            type="checkbox"
+                            checked={selectedValues.includes(node.value)}
+                            onChange={() => handleCheckboxChange(node)}
+                            style={{ marginRight: 4 }}
+                        />
+                        {node.label}
+                    </label>
                     {node.children && node.children.length > 0 && (
                         <span
                             onClick={() => toggleNodeExpansion(node.value)}
@@ -103,11 +95,10 @@ const LocalityTreeSearchInput: React.FC<LocalityTreeSearchInputProps> = ({
                         </span>
                     )}
                 </div>
-                {/* Render immediate children only if this node is expanded */}
                 {node.children && node.children.length > 0 && expandedMap[node.value] && (
                     <div>{renderTreeNodes(node.children, level + 1)}</div>
                 )}
-            </React.Fragment>
+            </div>
         ));
     };
 
@@ -140,4 +131,3 @@ const LocalityTreeSearchInput: React.FC<LocalityTreeSearchInputProps> = ({
 };
 
 export default LocalityTreeSearchInput;
-
