@@ -5,10 +5,12 @@
     gap: 0.5rem;
     max-width: 600px;
     min-height: 40px;
-    padding: 0.3rem;
+    padding: 5px;
+    padding-top: 18px;
+    padding-bottom: 18px;
     background-color: #fff;
-    border: 1px solid #ccc;
-    border-bottom-width: 0px;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
 }
 
 .container__tag {

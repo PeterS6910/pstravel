@@ -22,10 +22,18 @@ interface HomeProps {
 const Home: React.FC<HomeProps> = ({ loclityCheckboxTree }) => {
 
     const [displayLocalityTree, setDisplayLocalityTree] = useState(false);
+    const [selectedLocalities, setSelectedLocalities] = useState<string[]>([]);
 
     useEffect(() => {
         Aos.init({ duration: 2000 })
     }, [])
+
+    function localitiesToString(localities: string[]): string {
+        return localities.map((locality) => {
+            const localityObj = loclityCheckboxTree.find((item) => item.value === locality);
+            return localityObj ? localityObj.label : locality;
+        }).join(', ');
+    }
 
     return (
         <section id='home' className='home'>
@@ -49,16 +57,18 @@ const Home: React.FC<HomeProps> = ({ loclityCheckboxTree }) => {
                         <div>
                             <label htmlFor="city">Search your destination:</label>
                             <div className="input flex">
-                                <input type="text" placeholder='Enter name here...' onClick={() => setDisplayLocalityTree(!displayLocalityTree)} />
+                                <input type="text" placeholder='Enter name here...' onClick={() => setDisplayLocalityTree(!displayLocalityTree)} value={localitiesToString(selectedLocalities)} />
                                 <GrLocation className="icon" />
                             </div>
                         </div>
                         {displayLocalityTree && <div className="localitySearchDialog">
                             <LocalityTreeSearchInput
                                 treeData={loclityCheckboxTree}
+                                selectedValuesInit={selectedLocalities}
                                 closeComponentCb={() => setDisplayLocalityTree(false)}
                                 onChange={(selectedValues: string[]) => {
                                     console.log('selectedValues:', selectedValues);
+                                    setSelectedLocalities(selectedValues);
                                 }}
                             />
                         </div>}
