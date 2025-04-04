@@ -9,6 +9,17 @@ interface LocalityTreeSearchInputProps {
 	onChange?: (selectedValues: string[]) => void;
 }
 
+const printTreeData = (nodes: LocalityCheckboxTreeNode[], indent: string = ''): void => {
+  nodes.forEach(node => {
+    console.log(`${indent}Node: ${node.label} (value: ${node.value})`);
+    if (node.children && node.children.length > 0) {
+      printTreeData(node.children, indent + '  ');
+    }
+  });
+};
+
+
+
 const LocalityTreeSearchInput: React.FC<LocalityTreeSearchInputProps> = ({
 	treeData,
 	onChange,
@@ -17,7 +28,10 @@ const LocalityTreeSearchInput: React.FC<LocalityTreeSearchInputProps> = ({
 	const [selectedValues, setSelectedValues] = useState<string[]>([]);
 	const [selectedValuesNormalized, setSelectedValuesNormalized] = useState<string[]>([]);
 	const [expandedMap, setExpandedMap] = useState<Record<string, boolean>>({});
+	const [searchText, setSearchText] = useState('');
 	const containerRef = useRef<HTMLDivElement>(null);
+
+    printTreeData(treeData); //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
 
 	// Recursively gather all descendant values of a node.
 	const getDescendantValues = (node: LocalityCheckboxTreeNode): string[] => {
@@ -31,9 +45,8 @@ const LocalityTreeSearchInput: React.FC<LocalityTreeSearchInputProps> = ({
 		return values;
 	};
 
-	// Normalize selected values:
-	// - When all node's descendants are selected or none are selected, include the node.
-	// - When only some descendants are selected, exclude the node and include its selected descendants.
+	// Normalize selected values for tree mode only.
+	// When in search mode, we simply use the selectedValues as-is.
 	const normalizeSelectedValues = (
 		nodes: LocalityCheckboxTreeNode[],
 		selected: string[]
@@ -51,12 +64,11 @@ const LocalityTreeSearchInput: React.FC<LocalityTreeSearchInputProps> = ({
 				const selectedDescendantCount = descendantValues.filter(val => selectedSet.has(val)).length;
 				const totalDescendantCount = descendantValues.length;
 
-				// If none of its descendants are selected or all of them are selected, include the node.
+				// If none or all descendants are selected, include the node.
 				if (selectedDescendantCount === 0 || selectedDescendantCount === totalDescendantCount) {
 					return [node.value];
 				} else {
-					// If only some descendants are selected, do not include the node,
-					// but include the normalized results from its children.
+					// Otherwise, process children.
 					let result: string[] = [];
 					node.children.forEach(child => {
 						result = result.concat(processNode(child));
@@ -64,7 +76,7 @@ const LocalityTreeSearchInput: React.FC<LocalityTreeSearchInputProps> = ({
 					return result;
 				}
 			} else {
-				// If the node is not selected, process its children.
+				// If not selected, process children.
 				let result: string[] = [];
 				if (node.children && node.children.length > 0) {
 					node.children.forEach(child => {
@@ -82,23 +94,33 @@ const LocalityTreeSearchInput: React.FC<LocalityTreeSearchInputProps> = ({
 		return normalized;
 	};
 
-	// Toggle checkbox selection for a node and all its descendants.
+	// Toggle checkbox selection for a node.
+	// In tree mode (when searchText is empty), we toggle the node and all its descendants.
+	// In search mode, we simply toggle the node's value.
 	const handleCheckboxChange = (node: LocalityCheckboxTreeNode) => {
-		setSelectedValues((prev) => {
-			const isChecked = prev.includes(node.value);
-			const descendantValues = getDescendantValues(node);
-			let newValues: string[];
-			if (isChecked) {
-				// Uncheck this node and all its descendants.
-				newValues = prev.filter(
-					(val) => val !== node.value && !descendantValues.includes(val)
-				);
-			} else {
-				// Check this node and all its descendants.
-				newValues = Array.from(new Set([...prev, node.value, ...descendantValues]));
-			}
-			return newValues;
-		});
+		if (searchText) {
+			// Search mode: simply toggle this node's selection.
+			setSelectedValues((prev) => {
+				return prev.includes(node.value)
+					? prev.filter(val => val !== node.value)
+					: [...prev, node.value];
+			});
+		} else {
+			// Tree mode: toggle the node and all its descendants.
+			setSelectedValues((prev) => {
+				const isChecked = prev.includes(node.value);
+				const descendantValues = getDescendantValues(node);
+				let newValues: string[];
+				if (isChecked) {
+					newValues = prev.filter(
+						(val) => val !== node.value && !descendantValues.includes(val)
+					);
+				} else {
+					newValues = Array.from(new Set([...prev, node.value, ...descendantValues]));
+				}
+				return newValues;
+			});
+		}
 	};
 
 	// Toggle expansion state when clicking the triangle.
@@ -106,15 +128,22 @@ const LocalityTreeSearchInput: React.FC<LocalityTreeSearchInputProps> = ({
 		setExpandedMap((prev) => ({ ...prev, [nodeValue]: !prev[nodeValue] }));
 	};
 
-	// Whenever selectedValues changes, compute the normalized selection
-	// and pass it via the onChange callback.
+	// Update normalized selection.
 	useEffect(() => {
-		const newNormalized = normalizeSelectedValues(treeData, selectedValues);
-		setSelectedValuesNormalized(newNormalized);
-		if (onChange) {
-			onChange(newNormalized);
+		if (searchText) {
+			// In search mode, bypass normalization.
+			setSelectedValuesNormalized(selectedValues);
+			if (onChange) {
+				onChange(selectedValues);
+			}
+		} else {
+			const newNormalized = normalizeSelectedValues(treeData, selectedValues);
+			setSelectedValuesNormalized(newNormalized);
+			if (onChange) {
+				onChange(newNormalized);
+			}
 		}
-	}, [selectedValues, treeData, onChange]);
+	}, [selectedValues, treeData, onChange, searchText]);
 
 	// Recursively find the label for a given value.
 	const getLabelForValue = (value: string, nodes: LocalityCheckboxTreeNode[]): string => {
@@ -158,6 +187,23 @@ const LocalityTreeSearchInput: React.FC<LocalityTreeSearchInputProps> = ({
 		));
 	};
 
+	// Helper: filter tree nodes based on the search query.
+	const filterTree = (nodes: LocalityCheckboxTreeNode[], query: string): LocalityCheckboxTreeNode[] => {
+		let result: LocalityCheckboxTreeNode[] = [];
+		nodes.forEach(node => {
+			if (node.label.toLowerCase().includes(query.toLowerCase())) {
+				result.push(node);
+			}
+			if (node.children && node.children.length > 0) {
+				result = result.concat(filterTree(node.children, query));
+			}
+		});
+        //printTreeData(treeData); //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+        console.log('@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ cp 200:  Filtered nodes:'); 
+        console.dir(result); //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+		return result;
+	};
+
 	// Close dropdown if clicking outside.
 	useEffect(() => {
 		const handleClickOutside = (event: MouseEvent) => {
@@ -173,6 +219,17 @@ const LocalityTreeSearchInput: React.FC<LocalityTreeSearchInputProps> = ({
 
 	return (
 		<div ref={containerRef} className={styles.mainContainer}>
+			<input 
+				type="text"
+				placeholder="Search..."
+				value={searchText}
+				onChange={(e) => {
+					// When typing in search, clear previous selections.
+					setSearchText(e.target.value);
+					setSelectedValues([]);
+				}}
+				style={{ marginBottom: '8px', padding: '4px', color: 'black'  }}
+			/>
 			<LocalitySelectTag
 				values={selectedValuesNormalized.map((v) => ({
 					value: v,
@@ -181,10 +238,29 @@ const LocalityTreeSearchInput: React.FC<LocalityTreeSearchInputProps> = ({
 				onChange={setSelectedValues}
 				onClick={() => { }}
 			/>
-			<div className={styles.selectContainer}>{renderTreeNodes(treeData)}</div>
+			{ searchText ? (
+				<div>
+					{filterTree(treeData, searchText).map((node) => (
+						<div key={node.value} style={{ margin: '4px 0' }}>
+							<label style={{ cursor: 'pointer' }}>
+								<input
+									type="checkbox"
+									checked={selectedValues.includes(node.value)}
+									onChange={() => handleCheckboxChange(node)}
+									style={{ marginRight: 4 }}
+								/>
+								{node.label}
+							</label>
+						</div>
+					))}
+				</div>
+			) : (
+				<div className={styles.selectContainer}>
+					{renderTreeNodes(treeData)}
+				</div>
+			)}
 		</div>
 	);
 };
 
 export default LocalityTreeSearchInput;
-
