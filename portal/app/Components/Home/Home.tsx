@@ -32,7 +32,7 @@ const Home: React.FC<HomeProps> = ({ loclityCheckboxTree }) => {
         return localities.map((locality) => {
             const localityObj = loclityCheckboxTree.find((item) => item.value === locality);
             return localityObj ? localityObj.label : locality;
-        }).join(', ');
+        }).join(', ') || '';
     }
 
     return (
@@ -57,7 +57,8 @@ const Home: React.FC<HomeProps> = ({ loclityCheckboxTree }) => {
                         <div>
                             <label htmlFor="city">Search your destination:</label>
                             <div className="input flex">
-                                <input type="text" placeholder='Enter name here...' onClick={() => setDisplayLocalityTree(!displayLocalityTree)} value={localitiesToString(selectedLocalities)} />
+                            {/*<input type="text" placeholder='Enter name here...' onClick={() => setDisplayLocalityTree(!displayLocalityTree)} value={localitiesToString(selectedLocalities)} />*/}
+                                <input type="text" readOnly placeholder='Enter name here...' onClick={() => setDisplayLocalityTree(!displayLocalityTree)} value={localitiesToString(selectedLocalities)} />
                                 <GrLocation className="icon" />
                             </div>
                         </div>

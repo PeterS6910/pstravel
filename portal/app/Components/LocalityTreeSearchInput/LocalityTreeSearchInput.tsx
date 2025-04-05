@@ -3,6 +3,7 @@ import { LocalityCheckboxTreeNode } from '../../back/locality';
 import LocalitySelectTag from './LocalitySelectTag';
 import styles from './LocalityTreeSearchInput.module.css';
 import deburr from 'lodash.deburr';
+import xor from 'lodash.xor';
 
 interface LocalityTreeSearchInputProps {
     treeData: LocalityCheckboxTreeNode[];
@@ -131,19 +132,27 @@ const LocalityTreeSearchInput: React.FC<LocalityTreeSearchInputProps> = ({
         setExpandedMap((prev) => ({ ...prev, [nodeValue]: !prev[nodeValue] }));
     };
 
+    function selectedValuesChanged(selectedValues: string[]) {
+        return xor(selectedValues, selectedValuesInit).length !== 0
+    }
+
     // Update normalized selection.
     useEffect(() => {
         if (searchText) {
             // In search mode, bypass normalization.
             setSelectedValuesNormalized(selectedValues);
             if (onChange) {
-                onChange(selectedValues);
+                if (selectedValuesChanged(selectedValues)) {
+                    onChange(selectedValues);
+                }
             }
         } else {
             const newNormalized = normalizeSelectedValues(treeData, selectedValues);
             setSelectedValuesNormalized(newNormalized);
             if (onChange) {
-                onChange(newNormalized);
+                if (selectedValuesChanged(newNormalized)) {
+                    onChange(newNormalized);
+                }
             }
         }
     }, [selectedValues, treeData, onChange, searchText]);
@@ -271,7 +280,7 @@ const LocalityTreeSearchInput: React.FC<LocalityTreeSearchInputProps> = ({
                 </div>
             )}
             <div className={styles.buttonsContainer}>
-                <button 
+                <button
                     className={styles.okButton}
                     type="button" onClick={closeComponentCb}>
                     Ok
