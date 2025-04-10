@@ -131,13 +131,6 @@
 .home .homeContent .cardDiv .destinationInput {
   position: relative;
 }
-.home .homeContent .cardDiv .destinationInput .localitySearchDialog {
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  z-index: 1000;
-  background: var(--whiteColor);
-}
 .home .homeContent .cardDiv.grid {
   align-items: start;
 }
@@ -153,6 +146,14 @@
 }
 .home .homeContent .homeFooterIcons .icon:hover {
   color: var(--PrimaryColor);
+}
+
+.localitySearchDialog {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 1000;
+  background: var(--whiteColor);
 }
 
 @media screen and (min-width: 500px) {
@@ -187,6 +188,13 @@
 @media screen and (min-width: 940px) {
   .home {
     height: 70vh;
+  }
+  .localitySearchDialog {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    z-index: 1000;
+    background: var(--whiteColor);
   }
 }
 @media screen and (min-width: 1024px) {

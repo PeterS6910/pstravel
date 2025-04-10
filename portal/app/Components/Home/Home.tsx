@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import React from 'react';
 import './home.css'
 //import video from '../../Assets/video.mp4'
@@ -9,8 +9,6 @@ import { AiOutlineInstagram } from 'react-icons/ai'
 import { SiTripadvisor } from 'react-icons/si'
 import { BsListTask } from 'react-icons/bs'
 import { TbApps } from 'react-icons/tb'
-import Aos from 'aos'
-import 'aos/dist/aos.css'
 
 import LocalityTreeSearchInput from '~/Components/LocalityTreeSearchInput/LocalityTreeSearchInput'
 import { LocalityCheckboxTreeNode } from '~/back/locality'
@@ -24,9 +22,6 @@ const Home: React.FC<HomeProps> = ({ loclityCheckboxTree }) => {
     const [displayLocalityTree, setDisplayLocalityTree] = useState(false);
     const [selectedLocalities, setSelectedLocalities] = useState<string[]>([]);
 
-    useEffect(() => {
-        Aos.init({ duration: 2000 })
-    }, [])
 
     function localitiesToString(localities: string[]): string {
         return localities.map((locality) => {
@@ -42,17 +37,17 @@ const Home: React.FC<HomeProps> = ({ loclityCheckboxTree }) => {
                 <source src="Assets/video.mp4" type="video/mp4" />
             </video>
 
-            <div data-aos="fade-down" className="homeContent container">
+            <div className="homeContent container">
                 <div className="textDiv">
                     <span className="smallText">
                         Our Packages
                     </span>
-                    <h1 data-aos="fade-down" className="homeTitle">
+                    <h1 className="homeTitle">
                         Search your Holiday
                     </h1>
                 </div>
 
-                <div data-aos="fade-down" className="cardDiv grid">
+                <div className="cardDiv grid">
                     <div className="destinationInput">
                         <div>
                             <label htmlFor="city">Search your destination:</label>

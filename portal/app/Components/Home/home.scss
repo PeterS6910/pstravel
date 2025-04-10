@@ -151,13 +151,6 @@
             .destinationInput {
                 position: relative;
 
-                .localitySearchDialog {
-                    position: absolute;
-                    top: 0px;
-                    left: 0px;
-                    z-index: 1000;
-                    background: var(--whiteColor);
-                }
             }
         }
 
@@ -182,6 +175,14 @@
             }
         }
     }
+}
+
+.localitySearchDialog {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 1000;
+    background: var(--whiteColor);
 }
 
 //MEDIA QUERIES ==========================================>
@@ -232,9 +233,18 @@
 }
 
 
+
 @media screen and (min-width: 940px) {
     .home {
         height: 70vh;
+    }
+
+    .localitySearchDialog {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        z-index: 1000;
+        background: var(--whiteColor);
     }
 }
 

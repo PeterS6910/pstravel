@@ -8,13 +8,8 @@ import { AiFillInstagram } from 'react-icons/ai'
 import { AiOutlineTwitter } from 'react-icons/ai'
 import { FaTripadvisor } from 'react-icons/fa'
 import { MdOutlineTravelExplore } from 'react-icons/md'
-import Aos from 'aos'
-import 'aos/dist/aos.css'
 
 const Footer = () => {
-    useEffect(() => {
-        Aos.init({ duration: 2000 })
-    }, [])
     return (
         <section id='footer' className='footer'>
             <div className="videoDiv">
@@ -24,13 +19,13 @@ const Footer = () => {
             </div>
             <div className="secContent container">
                 <div className="contactDiv flex">
-                    <div data-aos="fade-up" data-aos-duration="2000" className="text">
+                    <div className="text">
                         <small>KEEP IN TOUCH</small>
                         <h2>Travel with us</h2>
                     </div>
                     <div className="inputDiv flex">
-                        <input data-aos="fade-up" data-aos-duration="2000" type="text" placeholder='Enter Email Address' />
-                        <button data-aos="fade-up" data-aos-duration="3000" className='btn flex' type='submit'>SEND  <FiSend className="icon" /></button>
+                        <input type="text" placeholder='Enter Email Address' />
+                        <button className='btn flex' type='submit'>SEND  <FiSend className="icon" /></button>
                     </div>
                 </div>
 
@@ -40,11 +35,11 @@ const Footer = () => {
                             <a href="#" className="logo flex"><h1><MdOutlineTravelExplore className='icon' />  Travel.</h1></a>
                         </div>
 
-                        <div data-aos="fade-up" data-aos-duration="2000" className="footerParagraph">
+                        <div className="footerParagraph">
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ullam inventore eos fuga hic cum voluptatem minima, tempore non odio provident nobis ipsam at, doloremque sed cupiditate ipsum in, atque soluta?
                         </div>
 
-                        <div data-aos="fade-up" data-aos-duration="3000" className="footerSocials flex">
+                        <div className="footerSocials flex">
                             <AiOutlineTwitter className="icon" />
                             <AiFillYoutube className="icon" />
                             <AiFillInstagram className="icon" />
@@ -55,7 +50,7 @@ const Footer = () => {
 
                     <div className="footerLinks grid">
                         {/* Group One */}
-                        <div data-aos="fade-up" data-aos-duration="4000" className="linkGroup">
+                        <div className="linkGroup">
                             <span className="groupTitle">
                                 OUR AGENCY
                             </span>
@@ -87,7 +82,7 @@ const Footer = () => {
                         </div>
 
                         {/* Group Two */}
-                        <div data-aos="fade-up" data-aos-duration="4000" className="linkGroup">
+                        <div className="linkGroup">
                             <span className="groupTitle">
                                 PARTNERS
                             </span>
@@ -119,7 +114,7 @@ const Footer = () => {
                         </div>
 
                         {/* Group three */}
-                        <div data-aos="fade-up" data-aos-duration="5000" className="linkGroup">
+                        <div className="linkGroup">
                             <span className="groupTitle">
                                 LAST MINUTE
                             </span>

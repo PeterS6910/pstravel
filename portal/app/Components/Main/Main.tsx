@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import './main.css'
 import { HiOutlineLocationMarker } from 'react-icons/hi'
 import { HiClipboardList } from 'react-icons/hi'
@@ -11,8 +10,6 @@ import { HiClipboardList } from 'react-icons/hi'
 //import img7 from '../../Assets/img (7).jpg'
 //import img8 from '../../Assets/img (14).jpg'
 //import img9 from '../../Assets/img (9).jpg'
-import Aos from 'aos'
-import 'aos/dist/aos.css'
 
 
 
@@ -117,9 +114,6 @@ const Data = [
 ]
 
 const Main = () => {
-    useEffect(() => {
-        Aos.init({ duration: 4000 })
-    }, [])
     return (
         <section id='main' className='main section container'>
             <div className="secTitle">
@@ -133,7 +127,7 @@ const Main = () => {
                     Data.map(({ id, imgSrc, destTitle, location, grade, fees, description }) => {
                         return (
 
-                            <div key={id} data-aos="fade-up" className="singleDestination">
+                            <div key={id} className="singleDestination">
 
                                 <div className="imageDiv">
                                     <img src={imgSrc} alt="" />
