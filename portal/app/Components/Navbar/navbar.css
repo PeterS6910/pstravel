@@ -18,7 +18,7 @@
   background: var(--whiteColorDeam);
   width: 100%;
   height: var(--headerHeight);
-  z-index: 1000;
+  z-index: 50;
   padding: 1rem;
 }
 .header .logo {
