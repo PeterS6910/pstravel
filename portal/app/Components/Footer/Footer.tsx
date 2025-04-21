@@ -1,13 +1,11 @@
-import { useEffect } from 'react'
 import './footer.css'
-//import video2 from '../../Assets/video (2).mp4'
-import { FiSend } from 'react-icons/fi'
-import { FiChevronRight } from 'react-icons/fi'
-import { AiFillYoutube } from 'react-icons/ai'
-import { AiFillInstagram } from 'react-icons/ai'
-import { AiOutlineTwitter } from 'react-icons/ai'
-import { FaTripadvisor } from 'react-icons/fa'
-import { MdOutlineTravelExplore } from 'react-icons/md'
+import { FiSend } from 'react-icons/fi/index.js'
+import { FiChevronRight } from 'react-icons/fi/index.js'
+import { AiFillYoutube } from 'react-icons/ai/index.js'
+import { AiFillInstagram } from 'react-icons/ai/index.js'
+import { AiOutlineTwitter } from 'react-icons/ai/index.js'
+import { FaTripadvisor } from 'react-icons/fa/index.js'
+import { MdOutlineTravelExplore } from 'react-icons/md/index.js'
 
 const Footer = () => {
     return (

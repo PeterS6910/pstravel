@@ -1,6 +1,6 @@
 import './main.css'
-import { HiOutlineLocationMarker } from 'react-icons/hi'
-import { HiClipboardList } from 'react-icons/hi'
+import { HiOutlineLocationMarker } from 'react-icons/hi/index.js'
+import { HiClipboardList } from 'react-icons/hi/index.js'
 //import img from '../../Assets/img (12).jpg'
 //import img2 from '../../Assets/img (2).jpg'
 //import img3 from '../../Assets/img (3).jpg'
