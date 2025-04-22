@@ -8,8 +8,9 @@ import xor from 'lodash.xor';
 interface LocalityTreeSearchInputProps {
     treeData: LocalityCheckboxTreeNode[];
     selectedValuesInit: string[];
-    closeComponentCb: () => void;
     onChange?: (selectedValues: string[]) => void;
+    onClear?: () => void;
+    closeComponentCb: () => void;
 }
 
 const printTreeData = (nodes: LocalityCheckboxTreeNode[], indent: string = ''): void => {
@@ -27,6 +28,7 @@ const LocalityTreeSearchInput: React.FC<LocalityTreeSearchInputProps> = ({
     treeData,
     selectedValuesInit,
     onChange,
+    onClear,
     closeComponentCb,
 }) => {
     const [selectedValues, setSelectedValues] = useState<string[]>(selectedValuesInit);
@@ -284,6 +286,12 @@ const LocalityTreeSearchInput: React.FC<LocalityTreeSearchInputProps> = ({
                     className={styles.okButton}
                     type="button" onClick={closeComponentCb}>
                     Ok
+                </button>
+
+                <button
+                    className={styles.cancelButton}
+                    type="button" onClick={onClear}>
+                    Clear
                 </button>
             </div>
         </div>

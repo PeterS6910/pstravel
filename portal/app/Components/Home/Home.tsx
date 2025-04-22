@@ -65,6 +65,7 @@ const Home: React.FC<HomeProps> = ({ loclityCheckboxTree }) => {
                                     console.log('selectedValues:', selectedValues);
                                     setSelectedLocalities(selectedValues);
                                 }}
+                                onClear={() => {setSelectedLocalities([]); setDisplayLocalityTree(false)}}
                             />
                         </div>}
                     </div>

@@ -3,14 +3,18 @@
     flex-wrap: wrap;
     align-items: center;
     gap: 0.5rem;
-    max-width: 600px;
-    min-height: 40px;
     padding: 5px;
     padding-top: 18px;
     padding-bottom: 18px;
     background-color: #fff;
     border-left: 1px solid #ccc;
     border-right: 1px solid #ccc;
+}
+
+@media screen and (min-width: 940px) {
+    .container {
+        max-width: 600px;
+    }
 }
 
 .container__tag {

@@ -1,7 +1,15 @@
 .mainContainer {
-    width: 300px;
     display: flex;
     flex-direction: column;
+    height: 100%;
+}
+
+@media screen and (min-width: 940px) {
+    .mainContainer {
+        width: 300px;
+        height: auto;
+        max-height: 600px;
+    }
 }
 
 .selectContainer {
@@ -11,21 +19,26 @@
     border-top: 0px;
     padding: 10px;
     padding-top: 0px;
-    max-height: 330px;
     overflow-y: auto;
     width: 100%;
     border-left: 1px solid #ccc;
     border-right: 1px solid #ccc;
 }
 
+
 .searchInput {
-    max-width: 600px;
     min-height: 40px;
     padding: 0.3rem;
     background-color: #fff;
     border: 1px solid #ccc;
     color: var(--textColor);
     outline: none;
+}
+
+@media screen and (min-width: 940px) {
+    .searchInput {
+        max-width: 600px;
+    }
 }
 
 .buttonsContainer {
@@ -44,6 +57,15 @@
 
 
 .okButton {
+    background-color: white;
+    color: #00a2c7;
+    border: 2px solid #00a2c7;
+    padding: 8px 18px; /* Adjusted padding to account for border */
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.cancelButton {
     background-color: white;
     color: #00a2c7;
     border: 2px solid #00a2c7;
