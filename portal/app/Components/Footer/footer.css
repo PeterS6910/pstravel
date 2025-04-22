@@ -52,7 +52,7 @@
   flex-direction: column;
   margin: auto;
   row-gap: 2rem;
-  z-index: 100;
+  z-index: 80;
 }
 .footer .secContent .contactDiv {
   justify-content: space-between;
