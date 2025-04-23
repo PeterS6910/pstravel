@@ -1,0 +1,50 @@
+.drpContainer {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 16px;
+    background: #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.drpHeading {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+    text-align: center;
+}
+
+.drpInputs {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.drpInputGroup {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.drpInputGroup label {
+    margin-bottom: 4px;
+    font-size: 0.875rem;
+}
+
+.drpInput {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background: #f9f9f9;
+}
+
+.drpCalendar {
+    box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.drpFooter {
+    margin-top: 8px;
+    text-align: center;
+    font-size: 0.875rem;
+}
