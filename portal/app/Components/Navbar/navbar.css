@@ -11,14 +11,14 @@
 }
 
 .header {
-  position: fixed;
+  /*position: fixed;*/
   display: flex;
   align-items: center;
   justify-content: space-between;
   background: var(--whiteColorDeam);
   width: 100%;
   height: var(--headerHeight);
-  z-index: 50;
+  /* z-index: 50;  */
   padding: 1rem;
 }
 .header .logo {
