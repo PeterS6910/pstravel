@@ -8,19 +8,29 @@ import config from '~/config/config';
 
 const FILE = 'DateRangePicker.tsx';
 
-export interface ISelectedRange {
-    dateRange: DateRange;
-    formatedDateRange: string;
-}
 
 export interface DateRangePickerProps {
     /** Optional initial date range */
     initialRange?: DateRange;
     /** Callback when range changes */
-    onRangeSelect?: (range: ISelectedRange) => void;
+    onRangeSelect?: (range: DateRange) => void;
     closeComponentCb?: () => void;
     onClear?: () => void;
 }
+
+function formatDate(date: Date | undefined): string {
+    if (!date) {
+        return '';
+    }
+    return format(date, 'PP', {locale: sk});
+}
+
+export function formatDateRange(range: DateRange): string {
+    if (!range.from || !range.to) {
+        return '';
+    }
+    return `${formatDate(range.from)} - ${formatDate(range.to)}`;
+};
 
 const DateRangePicker: React.FC<DateRangePickerProps> = ({ initialRange, onRangeSelect, closeComponentCb, onClear }): JSX.Element => {
     const FUNC = 'DateRangePicker()';
@@ -42,13 +52,7 @@ const DateRangePicker: React.FC<DateRangePickerProps> = ({ initialRange, onRange
     const containerRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-        if (initialRange) {
-            let _range: ISelectedRange = {
-                dateRange: initialRange,
-                formatedDateRange: formatDateRange(initialRange),
-            };
-            onRangeSelect(_range);
-        }
+        onRangeSelect(initialRange);
     }, [initialRange, onRangeSelect]);
 
     useEffect(() => {
@@ -68,13 +72,9 @@ const DateRangePicker: React.FC<DateRangePickerProps> = ({ initialRange, onRange
         };
     }, [closeComponentCb]);
 
-    const handleSelect = (selected: DateRange): void => {
-        setRange(selected);
-        let _range: ISelectedRange = {
-            dateRange: initialRange,
-            formatedDateRange: formatDateRange(initialRange),
-        };
-        onRangeSelect(_range);
+    const handleSelect = (selectedRange: DateRange): void => {
+        setRange(selectedRange);
+        onRangeSelect(selectedRange);
     };
 
     let locale;
@@ -84,19 +84,6 @@ const DateRangePicker: React.FC<DateRangePickerProps> = ({ initialRange, onRange
         console.error(`${FILE}:${FUNC}: Unsupported language: ${config.language}`);
         locale = undefined;
     }
-
-    const formatDate = (date: Date | undefined): string => {
-        if (!date) {
-            return '';
-        }
-        return format(date, 'PP', {locale: sk});
-    }
-    const formatDateRange = (range: DateRange): string => {
-        if (!range.from || !range.to) {
-            return '';
-        }
-        return `${formatDate(range.from)} - ${formatDate(range.to)}`;
-    };
 
     return (
         <div ref={containerRef} className={styles.container}>
@@ -109,6 +96,7 @@ const DateRangePicker: React.FC<DateRangePickerProps> = ({ initialRange, onRange
             {isMounted && <div> <DayPicker
                 mode="range"
                 required
+                defaultMonth={range.from}
                 selected={range}
                 onSelect={handleSelect}
             /></div>}

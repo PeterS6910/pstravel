@@ -12,8 +12,10 @@ import { TbApps } from 'react-icons/tb/index.js'
 import LocalityTreeSearchInput from '~/Components/LocalityTreeSearchInput/LocalityTreeSearchInput'
 import { LocalityCheckboxTreeNode } from '~/back/locality'
 
-import DateRangePicker, { ISelectedRange } from '~/Components/DateRangePicker/DateRangePicker'
+import DateRangePicker, { formatDateRange as dpFormatDateRange } from '~/Components/DateRangePicker/DateRangePicker'
 import { DateRange } from 'react-day-picker';
+
+import PriceRangeSelector from '~/Components/PriceRangeSelector/PriceRangeSelector'
 
 interface HomeProps {
     loclityCheckboxTree: LocalityCheckboxTreeNode[];
@@ -26,10 +28,13 @@ const Home: React.FC<HomeProps> = ({ loclityCheckboxTree }) => {
 
     const [displayDayPicker, setDisplayDayPicker] = useState(false);
 
-    const [selectedDateRange, setSelectedDateRange] = useState<ISelectedRange>({
-        dateRange: { from: undefined, to: undefined },
-        formatedDateRange: '',
-    });
+    const defaultDateRange: DateRange = {
+        from: new Date(new Date().setDate(new Date().getDate() + 7)),
+        to: new Date(new Date().setDate(new Date().getDate() + 14)),
+    };
+    const [selectedDateRange, setSelectedDateRange] = useState<DateRange>(defaultDateRange);
+
+    const [maxPrice, setMaxPrice] = useState<number>(5000);
 
 
 
@@ -40,13 +45,8 @@ const Home: React.FC<HomeProps> = ({ loclityCheckboxTree }) => {
         }).join(', ') || '';
     }
 
-    const initialDateRange: DateRange = {
-        from: new Date(new Date().setDate(new Date().getDate() + 1)),
-        to: new Date(new Date().setDate(new Date().getDate() + 7)),
-    };
 
-    const handleDateRangeSelect = (range: ISelectedRange) => {
-        console.log('@@@@@@@@@@@@@@@@@@@@@ Selected date range:', range);
+    const handleDateRangeSelect = (range: DateRange) => {
         setSelectedDateRange(range);
     };
 
@@ -73,7 +73,7 @@ const Home: React.FC<HomeProps> = ({ loclityCheckboxTree }) => {
                             <label htmlFor="city">Search your destination:</label>
                             <div className="input flex">
                                 {/*<input type="text" placeholder='Enter name here...' onClick={() => setDisplayLocalityTree(!displayLocalityTree)} value={localitiesToString(selectedLocalities)} />*/}
-                                <input type="text" readOnly placeholder='Enter name here...' onClick={() => setDisplayLocalityTree(!displayLocalityTree)} value={localitiesToString(selectedLocalities)} />
+                                <input type="text" readOnly  onClick={() => setDisplayLocalityTree(!displayLocalityTree)} value={localitiesToString(selectedLocalities)} />
                                 <GrLocation className="icon" onClick={() => setDisplayLocalityTree(!displayLocalityTree)} />
                             </div>
                         </div>
@@ -95,13 +95,14 @@ const Home: React.FC<HomeProps> = ({ loclityCheckboxTree }) => {
                     <div className="dateInput">
                         <label htmlFor="city">Select your date:</label>
                         <div className="input flex">
-                        <input type="text" readOnly placeholder='Select the date range ...' onClick={() => setDisplayDayPicker(!displayDayPicker)} value={selectedDateRange.formatedDateRange} />
+                        <input type="text" readOnly onClick={() => setDisplayDayPicker(!displayDayPicker)} value={dpFormatDateRange(selectedDateRange)} />
                         <GrCalendar className="icon" onClick={() => setDisplayDayPicker(!displayDayPicker)} />
                         {displayDayPicker &&  <div className="dayRangePickerDialog">
                             <DateRangePicker 
-                                initialRange={initialDateRange} 
+                                initialRange={selectedDateRange} 
                                 onRangeSelect={handleDateRangeSelect} 
                                 closeComponentCb={() => setDisplayDayPicker(false)}
+                                onClear={() => { setSelectedDateRange(defaultDateRange); setDisplayDayPicker(false) }}
                             />
                         </div>}
                     </div>
@@ -110,11 +111,21 @@ const Home: React.FC<HomeProps> = ({ loclityCheckboxTree }) => {
                     <div className="priceInput">
                         <div className="label_total flex">
                             <label htmlFor="city">Max price:</label>
-                            <h3 className="total">$5000</h3>
+                            <h3 className="total">${maxPrice}</h3>
                         </div>
+                        {/*
                         <div className="input flex">
                             <input type="range" max="5000" min="1000" />
                         </div>
+                        */}
+                       <PriceRangeSelector
+                            min={1000}
+                            max={5000}
+                            initial={maxPrice}
+                            onChange={(value: number) => {
+                                setMaxPrice(value);
+                            }}
+                        />
                     </div>
 
                     <div className="searchOptions flex">
