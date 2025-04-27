@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ImportXml.Repository
 {
-    public class CountryRepository : EntityRepository<Country>
+    public class CountryRepository : EntityRepository<Country, short>
     {
         public CountryRepository(DbContext context) : base(context)
         {
@@ -20,11 +20,11 @@ namespace ImportXml.Repository
             return await _context.Set<Country>().FirstOrDefaultAsync(c => c.CountryName == countryName);
         }
 
-        public async Task<Guid> GetOrCreateCountryByNameAsync(string countryName)
+        public async Task<short> GetOrCreateCountryByNameAsync(string countryName)
         {
             if (string.IsNullOrEmpty(countryName))
             {
-                return Guid.Empty;
+                return short.MinValue;
             }
 
             var country = await _context.Set<Country>().FirstOrDefaultAsync(c => c.CountryName == countryName);
@@ -32,13 +32,14 @@ namespace ImportXml.Repository
             {
                 country = new Country
                 {
-                    Id = Guid.NewGuid(),
+                    IsNajziadanejsia = false,
                     CountryName = countryName,
                     CreatedAt = DateTime.UtcNow
                 };
 
-                await _context.Set<Country>().AddAsync(country);
+                var addedEntity = await _context.Set<Country>().AddAsync(country);
                 await _context.SaveChangesAsync();
+                return addedEntity.Entity.Id;
             }
 
             return country.Id;

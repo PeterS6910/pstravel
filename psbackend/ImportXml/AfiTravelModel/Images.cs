@@ -8,7 +8,7 @@ using System.Xml.Serialization;
 
 namespace ImportXml.AfiTravelModel
 {
-    public  class Images : BaseEntity
+    public  class Images : BaseEntity<Guid>
     {
         [Key]
         public override Guid Id { get; set; } = Guid.NewGuid();

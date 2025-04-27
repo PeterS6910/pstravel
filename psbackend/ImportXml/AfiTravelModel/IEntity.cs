@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace ImportXml.AfiTravelModel
 {
-    public  interface IEntity
+    public  interface IEntity<T>
     {       
-        public Guid Id { get; set; }
+        public T Id { get; set; }
     }
 }

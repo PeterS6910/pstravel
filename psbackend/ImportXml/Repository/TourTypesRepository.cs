@@ -8,20 +8,19 @@ using System.Threading.Tasks;
 
 namespace ImportXml.Repository
 {
-    public class TourTypesRepository : EntityRepository<TourTypes>
+    public class TourTypesRepository : EntityRepository<TourTypes, short>
     {
         public TourTypesRepository(DbContext context) : base(context)
         {
         }
 
-        public async Task<Guid> GetIdOrCreateTourTypesByNameAsync(string tourTypesName)
+        public async Task<short> GetIdOrCreateTourTypesByNameAsync(string tourTypesName)
         {
             var tourTypes = await _context.Set<TourTypes>().FirstOrDefaultAsync(c => c.TourTypesName == tourTypesName);
             if (tourTypes == null)
             {
                 tourTypes = new TourTypes
                 {
-                    Id = Guid.NewGuid(),
                     TourTypesName = tourTypesName,
                     CreatedAt = DateTime.UtcNow,
                 };

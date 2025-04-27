@@ -8,20 +8,19 @@ using System.Threading.Tasks;
 
 namespace ImportXml.Repository
 {
-    public class CestovkaRepository : EntityRepository<Cestovka>
+    public class CestovkaRepository : EntityRepository<Cestovka, short>
     {
         public CestovkaRepository(DbContext context) : base(context)
         {
         }
 
-        public async Task<Guid> GetIdByCestovkaNameAsync(string cestovkaName)
+        public async Task<short> GetIdByCestovkaNameAsync(string cestovkaName)
         {
             var cestovka = await _context.Set<Cestovka>().FirstOrDefaultAsync(c => c.Nazov == cestovkaName);
             if (cestovka == null)
             {
                 cestovka = new Cestovka
                 {
-                    Id = Guid.NewGuid(),
                     Nazov = cestovkaName,
                     CreatedAt = DateTime.UtcNow,
                 };

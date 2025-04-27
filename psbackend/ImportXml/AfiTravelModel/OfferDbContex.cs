@@ -48,6 +48,10 @@ namespace ImportXml.AfiTravelModel
                     .IsRequired()
                     .HasMaxLength(30); // Povinné a max 30 znakov
 
+                entity.Property(j => j.Virtualka)
+                    .IsRequired()
+                    .HasMaxLength(2);
+                // Povinné a max 2 znakov
                 entity.Property(j => j.JobCodeId)
                     .IsRequired(); // Povinné pole
 

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ImportXml.AfiTravelModel
 {
-    public  class HotelDetails : BaseEntity
+    public  class HotelDetails : BaseEntity<Guid>
     {
         [Key]
         [Required]
@@ -15,7 +15,7 @@ namespace ImportXml.AfiTravelModel
 
         public Guid HotelId { get; set; }
 
-        public Guid CestovkaId { get; set; }
+        public short CestovkaId { get; set; }
 
         [StringLength(45)]
         public string IdHotelaCestovky { get; set; }

@@ -1,17 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace ImportXml.AfiTravelModel
 {
-    public class Country : BaseEntity
+    public class Country : BaseEntity<short>
     {
         [Key]
         [Required]
-        public override Guid Id { get; set; } = Guid.NewGuid();
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public override short Id { get; set; }
 
         public bool? IsNajziadanejsia { get; set; }
 

@@ -9,7 +9,7 @@ using System.Xml.Linq;
 
 namespace ImportXml.Repository
 {
-    public class HotelRepository : EntityRepository<Hotel>
+    public class HotelRepository : EntityRepository<Hotel, Guid>
     {
         private readonly HotelDetailsRepository? _hotelDetaisRepository;
 
@@ -24,7 +24,7 @@ namespace ImportXml.Repository
             _hotelDetaisRepository = hotelDetaisRepository;
         }
 
-        public async Task<Hotel?> GetOrCreateHotelByNameCountryLocalityAsync(string hotelName, XElement offer, Guid countryId, Guid? localityId, Guid cestovkaId)
+        public async Task<Hotel?> GetOrCreateHotelByNameCountryLocalityAsync(string hotelName, XElement offer, short countryId, int? localityId, short cestovkaId)
         {
             if (string.IsNullOrEmpty(hotelName))
             {
@@ -34,28 +34,27 @@ namespace ImportXml.Repository
             {
                 var hotelInfoId = offer.Element("hotelinfo")?.Element("id")?.Value;
                 var hotel = await _context.Set<Hotel>().FirstOrDefaultAsync(x => x.CountryId == countryId && x.Name == hotelName && x.LocalityId == localityId);
-                if (hotel == null)
+                Guid idHotela = hotel == null ? Guid.NewGuid() : hotel.Id;
+
+                hotel = new Hotel
                 {
-                    hotel = new Hotel
-                    {
-                        Id = Guid.NewGuid(),
-                        CountryId = countryId,
-                        LocalityId = localityId,
-                        Name = hotelName,
-                        Latitude = double.TryParse(offer.Element("hotelinfo")?.Element("coords")?.Element("lat").Value, System.Globalization.NumberStyles.Any, System.Globalization.CultureInfo.InvariantCulture,
-                             out double lat) ? lat : 0.0,
-                        Longitude = double.TryParse(offer.Element("hotelinfo")?.Element("coords")?.Element("lng").Value, System.Globalization.NumberStyles.Any, System.Globalization.CultureInfo.InvariantCulture,
-                             out double lng) ? lng : 0.0,
-                        Stars = double.TryParse(offer.Element("hotelinfo")?.Element("stars")?.Value, System.Globalization.NumberStyles.Any, System.Globalization.CultureInfo.InvariantCulture,
-                             out double stars) ? stars : 0.0,
-                        Rating = double.TryParse(offer.Element("hotelinfo")?.Element("rating")?.Value, System.Globalization.NumberStyles.Any, System.Globalization.CultureInfo.InvariantCulture,
-                             out double rating) ? rating : 0.0,
-                        RatingCount = int.TryParse(offer.Element("hotelinfo")?.Element("ratingcount")?.Value, out int ratingCount) ? ratingCount : 0,
-                        CreatedAt = DateTime.Now
-                    };
-                    await _context.Set<Hotel>().AddAsync(hotel);
-                    await _context.SaveChangesAsync();
-                }
+                    Id = idHotela,
+                    CountryId = countryId,
+                    LocalityId = localityId,
+                    Name = hotelName,
+                    Latitude = double.TryParse(offer.Element("hotelinfo")?.Element("coords")?.Element("lat").Value, System.Globalization.NumberStyles.Any, System.Globalization.CultureInfo.InvariantCulture,
+                         out double lat) ? lat : 0.0,
+                    Longitude = double.TryParse(offer.Element("hotelinfo")?.Element("coords")?.Element("lng").Value, System.Globalization.NumberStyles.Any, System.Globalization.CultureInfo.InvariantCulture,
+                         out double lng) ? lng : 0.0,
+                    Stars = double.TryParse(offer.Element("hotelinfo")?.Element("stars")?.Value, System.Globalization.NumberStyles.Any, System.Globalization.CultureInfo.InvariantCulture,
+                         out double stars) ? stars : 0.0,
+                    Rating = double.TryParse(offer.Element("hotelinfo")?.Element("rating")?.Value, System.Globalization.NumberStyles.Any, System.Globalization.CultureInfo.InvariantCulture,
+                         out double rating) ? rating : 0.0,
+                    RatingCount = int.TryParse(offer.Element("hotelinfo")?.Element("ratingcount")?.Value, out int ratingCount) ? ratingCount : 0,
+                    CreatedAt = DateTime.Now
+                };
+                await UpsertAsync(hotel);                
+
 
                 if (!string.IsNullOrEmpty(hotelInfoId) && _hotelDetaisRepository != null)
                 {
@@ -67,11 +66,11 @@ namespace ImportXml.Repository
             else return null;
         }
 
-        public async Task<Guid> GetOrCreateCountryIdAsync(string countryName)
+        public async Task<short> GetOrCreateCountryIdAsync(string countryName)
         {
             if (string.IsNullOrEmpty(countryName))
             {
-                return Guid.Empty;
+                return 0;
             }
 
             var country = await _context.Set<Country>().FirstOrDefaultAsync(c => c.CountryName == countryName);
@@ -79,7 +78,6 @@ namespace ImportXml.Repository
             {
                 country = new Country
                 {
-                    Id = Guid.NewGuid(),
                     CountryName = countryName,
                     CreatedAt = DateTime.UtcNow
                 };

@@ -9,7 +9,7 @@ using System.Xml.Linq;
 
 namespace ImportXml.Repository
 {
-    public class ImagesRepository : EntityRepository<Images>
+    public class ImagesRepository : EntityRepository<Images, Guid>
     {
         public ImagesRepository(DbContext context) : base(context)
         {

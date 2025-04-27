@@ -8,26 +8,26 @@ using System.Threading.Tasks;
 
 namespace ImportXml.Repository
 {
-    public class TransportRepository : EntityRepository<Transport>
+    public class TransportRepository : EntityRepository<Transport, short>
     {
         public TransportRepository(DbContext context) : base(context)
         {
         }
 
-        public async Task<Guid> GetIdOrCreateTransportByNameAsync(string transportName)
+        public async Task<short> GetIdOrCreateTransportByNameAsync(string transportName)
         {
             var transport = await _context.Set<Transport>().FirstOrDefaultAsync(c => c.TransportName == transportName);
             if (transport == null)
             {
                 transport = new Transport
                 {
-                    Id = Guid.NewGuid(),
                     TransportName = transportName,
                     ParentTransportId = null,
                     CreatedAt = DateTime.UtcNow,
                 };
-                await _context.Set<Transport>().AddAsync(transport);
+                var addedEntity = await _context.Set<Transport>().AddAsync(transport);
                 await _context.SaveChangesAsync();
+                return addedEntity.Entity.Id;
             }
             return transport.Id;
         }

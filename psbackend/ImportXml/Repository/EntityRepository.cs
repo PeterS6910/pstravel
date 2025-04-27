@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ImportXml.Repository
 {
-    public class EntityRepository<T> where T : BaseEntity
+    public class EntityRepository<T,TId> where T : BaseEntity<TId>
     {
         protected readonly DbContext _context;
 
@@ -19,7 +19,7 @@ namespace ImportXml.Repository
 
         public async Task UpsertAsync(T entity)
         {
-            var existing = await _context.Set<T>().FirstOrDefaultAsync(e=> e.Id == entity.Id);
+            var existing = await _context.Set<T>().FirstOrDefaultAsync(e => e.Id.Equals(entity.Id));
             if (existing == null)
                 await _context.Set<T>().AddAsync(entity);
             else
@@ -30,21 +30,28 @@ namespace ImportXml.Repository
 
         public async Task UpdateAsync(T entity)
         {
-            var existing = await _context.Set<T>().FirstOrDefaultAsync(e => e.Id == entity.Id);
-            if (existing != null)
+            try
             {
-                _context.Entry(existing).CurrentValues.SetValues(entity);
-                await _context.SaveChangesAsync();
+                var existing = await _context.Set<T>().FirstOrDefaultAsync(e => e.Id.Equals(entity.Id));
+                if (existing != null)
+                {
+                    _context.Entry(existing).CurrentValues.SetValues(entity);
+                    await _context.SaveChangesAsync();
+                }
+                else
+                {
+                    throw new KeyNotFoundException($"Entity with ID {entity.Id} not found.");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                throw new KeyNotFoundException($"Entity with ID {entity.Id} not found.");
+                Console.WriteLine("entity:" + entity.ToString());
             }
         }
 
-        public async Task<T> GetByIdAsync(Guid id)
+        public async Task<T> GetByIdAsync(TId id)
         {
-            return await _context.Set<T>().FirstOrDefaultAsync(e => e.Id == id);
+            return await _context.Set<T>().FirstOrDefaultAsync(e => EqualityComparer<TId>.Default.Equals(e.Id, id));
         }
 
         public async Task<IEnumerable<T>> GetAllAsync()
@@ -52,9 +59,9 @@ namespace ImportXml.Repository
             return await _context.Set<T>().ToListAsync();
         }
 
-        public async Task DeleteAsync(Guid id)
+        public async Task DeleteAsync(TId id)
         {
-            var entity = await _context.Set<T>().FirstOrDefaultAsync(e => e.Id == id);
+            var entity = await _context.Set<T>().FirstOrDefaultAsync(e => EqualityComparer<TId>.Default.Equals(e.Id, id));
             if (entity != null)
             {
                 _context.Set<T>().Remove(entity);

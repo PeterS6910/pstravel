@@ -8,12 +8,12 @@ using System.Xml.Serialization;
 
 namespace ImportXml.AfiTravelModel
 {
-    public class Offer : BaseEntity
+    public class Offer : BaseEntity <Guid>
     {
         [Key]
         public override Guid Id { get; set; } = Guid.NewGuid();
 
-        public Guid CestovkaId { get; set; }
+        public short CestovkaId { get; set; }
 
         public Guid HotelId { get; set; } // Cudzie kľúčové pole
               
@@ -23,11 +23,11 @@ namespace ImportXml.AfiTravelModel
 
         public Double TotalPrice { get; set; }
 
-        public Guid CurrencyId { get; set; }
+        public short CurrencyId { get; set; }
 
-        public Guid FoodId { get; set; }
+        public short FoodId { get; set; }
 
-        public Guid TransportationId { get; set; }
+        public short TransportationId { get; set; }
 
         public string Url { get; set; }
 
@@ -40,8 +40,7 @@ namespace ImportXml.AfiTravelModel
 
         public int Length { get; set; }
 
-        [MaxLength(10)]
-        public string Discount { get; set; }
+        public short Discount { get; set; }
 
     }
 }

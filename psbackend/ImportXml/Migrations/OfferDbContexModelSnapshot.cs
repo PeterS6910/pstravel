@@ -24,9 +24,11 @@ namespace ImportXml.Migrations
 
             modelBuilder.Entity("ImportXml.AfiTravelModel.Cestovka", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<short>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("char(36)");
+                        .HasColumnType("smallint");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<short>("Id"));
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime(6)");
@@ -62,9 +64,11 @@ namespace ImportXml.Migrations
 
             modelBuilder.Entity("ImportXml.AfiTravelModel.Country", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<short>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("char(36)");
+                        .HasColumnType("smallint");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<short>("Id"));
 
                     b.Property<string>("CountryName")
                         .IsRequired()
@@ -90,9 +94,11 @@ namespace ImportXml.Migrations
 
             modelBuilder.Entity("ImportXml.AfiTravelModel.Currency", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<short>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("char(36)");
+                        .HasColumnType("smallint");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<short>("Id"));
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime(6)");
@@ -115,9 +121,11 @@ namespace ImportXml.Migrations
 
             modelBuilder.Entity("ImportXml.AfiTravelModel.Food", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<short>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("char(36)");
+                        .HasColumnType("smallint");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<short>("Id"));
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime(6)");
@@ -144,8 +152,8 @@ namespace ImportXml.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("char(36)");
 
-                    b.Property<Guid>("CountryId")
-                        .HasColumnType("char(36)");
+                    b.Property<short>("CountryId")
+                        .HasColumnType("smallint");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime(6)");
@@ -156,8 +164,8 @@ namespace ImportXml.Migrations
                     b.Property<float?>("Latitude")
                         .HasColumnType("float");
 
-                    b.Property<Guid?>("LocalityId")
-                        .HasColumnType("char(36)");
+                    b.Property<int?>("LocalityId")
+                        .HasColumnType("int");
 
                     b.Property<float?>("Longitude")
                         .HasColumnType("float");
@@ -194,8 +202,8 @@ namespace ImportXml.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("char(36)");
 
-                    b.Property<Guid>("CestovkaId")
-                        .HasColumnType("char(36)");
+                    b.Property<short>("CestovkaId")
+                        .HasColumnType("smallint");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime(6)");
@@ -288,11 +296,11 @@ namespace ImportXml.Migrations
                     b.Property<string>("InputParameters")
                         .HasColumnType("longtext");
 
-                    b.Property<Guid>("JobCodeId")
-                        .HasColumnType("char(36)");
+                    b.Property<short>("JobCodeId")
+                        .HasColumnType("smallint");
 
-                    b.Property<Guid>("JobStateId")
-                        .HasColumnType("char(36)");
+                    b.Property<short>("JobStateId")
+                        .HasColumnType("smallint");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -305,6 +313,11 @@ namespace ImportXml.Migrations
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime(6)");
 
+                    b.Property<string>("Virtualka")
+                        .IsRequired()
+                        .HasMaxLength(2)
+                        .HasColumnType("varchar(2)");
+
                     b.HasKey("Id");
 
                     b.HasIndex("JobCodeId");
@@ -316,9 +329,11 @@ namespace ImportXml.Migrations
 
             modelBuilder.Entity("ImportXml.AfiTravelModel.JobCode", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<short>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("char(36)");
+                        .HasColumnType("smallint");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<short>("Id"));
 
                     b.Property<string>("Code")
                         .IsRequired()
@@ -351,9 +366,11 @@ namespace ImportXml.Migrations
 
             modelBuilder.Entity("ImportXml.AfiTravelModel.JobState", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<short>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("char(36)");
+                        .HasColumnType("smallint");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<short>("Id"));
 
                     b.Property<string>("Code")
                         .IsRequired()
@@ -381,12 +398,14 @@ namespace ImportXml.Migrations
 
             modelBuilder.Entity("ImportXml.AfiTravelModel.Locality", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("char(36)");
+                        .HasColumnType("int");
 
-                    b.Property<Guid>("CountryId")
-                        .HasColumnType("char(36)");
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<short>("CountryId")
+                        .HasColumnType("smallint");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime(6)");
@@ -399,8 +418,8 @@ namespace ImportXml.Migrations
                         .HasMaxLength(80)
                         .HasColumnType("varchar(80)");
 
-                    b.Property<Guid?>("ParentLocalityId")
-                        .HasColumnType("char(36)");
+                    b.Property<int?>("ParentLocalityId")
+                        .HasColumnType("int");
 
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime(6)");
@@ -420,25 +439,24 @@ namespace ImportXml.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("char(36)");
 
-                    b.Property<Guid>("CestovkaId")
-                        .HasColumnType("char(36)");
+                    b.Property<short>("CestovkaId")
+                        .HasColumnType("smallint");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<Guid>("CurrencyId")
-                        .HasColumnType("char(36)");
+                    b.Property<short>("CurrencyId")
+                        .HasColumnType("smallint");
 
                     b.Property<DateTime?>("DeletedAt")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<string>("Discount")
-                        .IsRequired()
+                    b.Property<short>("Discount")
                         .HasMaxLength(10)
-                        .HasColumnType("varchar(10)");
+                        .HasColumnType("smallint");
 
-                    b.Property<Guid>("FoodId")
-                        .HasColumnType("char(36)");
+                    b.Property<short>("FoodId")
+                        .HasColumnType("smallint");
 
                     b.Property<DateTime>("From")
                         .HasColumnType("datetime(6)");
@@ -466,8 +484,8 @@ namespace ImportXml.Migrations
                     b.Property<double>("TotalPrice")
                         .HasColumnType("double");
 
-                    b.Property<Guid>("TransportationId")
-                        .HasColumnType("char(36)");
+                    b.Property<short>("TransportationId")
+                        .HasColumnType("smallint");
 
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime(6)");
@@ -506,8 +524,8 @@ namespace ImportXml.Migrations
                     b.Property<Guid>("OfferId")
                         .HasColumnType("char(36)");
 
-                    b.Property<Guid>("TourTypesId")
-                        .HasColumnType("char(36)");
+                    b.Property<short>("TourTypesId")
+                        .HasColumnType("smallint");
 
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime(6)");
@@ -523,9 +541,11 @@ namespace ImportXml.Migrations
 
             modelBuilder.Entity("ImportXml.AfiTravelModel.TourTypes", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<short>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("char(36)");
+                        .HasColumnType("smallint");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<short>("Id"));
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime(6)");
@@ -548,9 +568,11 @@ namespace ImportXml.Migrations
 
             modelBuilder.Entity("ImportXml.AfiTravelModel.Transport", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<short>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("char(36)");
+                        .HasColumnType("smallint");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<short>("Id"));
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime(6)");
@@ -558,8 +580,8 @@ namespace ImportXml.Migrations
                     b.Property<DateTime?>("DeletedAt")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<Guid?>("ParentTransportId")
-                        .HasColumnType("char(36)");
+                    b.Property<short?>("ParentTransportId")
+                        .HasColumnType("smallint");
 
                     b.Property<string>("TransportName")
                         .IsRequired()
