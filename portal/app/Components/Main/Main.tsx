@@ -10,6 +10,8 @@ import { HiClipboardList } from 'react-icons/hi/index.js'
 //import img7 from '../../Assets/img (7).jpg'
 //import img8 from '../../Assets/img (14).jpg'
 //import img9 from '../../Assets/img (9).jpg'
+import { IOffer } from '~/back/offer'
+import OfferCard from '~/Components/Offer/OfferCard'
 
 
 
@@ -113,7 +115,11 @@ const Data = [
     },
 ]
 
-const Main = () => {
+interface MainProps {
+    offers: IOffer[];
+}
+
+const  Main: React.FC<MainProps> = ({ offers }) => {
     return (
         <section id='main' className='main section container'>
             <div className="secTitle">
@@ -124,6 +130,7 @@ const Main = () => {
 
             <div className="secContent grid">
                 {
+                    /*
                     Data.map(({ id, imgSrc, destTitle, location, grade, fees, description }) => {
                         return (
 
@@ -157,6 +164,12 @@ const Main = () => {
                                 </div>
                             </div>
 
+                        )
+                    })
+                    */
+                   offers.map((offer) => {
+                        return (
+                            <OfferCard key={offer.id} offer={offer} />
                         )
                     })
                 }

@@ -1,0 +1,109 @@
+.singleOffer {
+    display: grid;
+    grid-template-rows: auto 1fr;
+    background-color: var(--cardBG);
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(140, 140, 141, 0.55);
+    overflow: hidden;
+    transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.singleOffer:hover {
+    background-color: var(--cardHover);
+    box-shadow: 1px 4px 4px rgba(85, 85, 114, 0.55);
+}
+
+.imageDiv {
+    width: 100%;
+    height: 180px;
+    overflow: hidden;
+}
+
+.imageDiv img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 2s ease;
+}
+
+.imageDiv:hover img {
+    transform: scale(1.05);
+}
+
+.offerInfo {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.hotelName {
+    font-size: 1.25rem;
+    color: var(--blackColor);
+    margin: 0;
+}
+
+.location {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--textColor);
+    font-size: 0.9rem;
+}
+
+:local(.location) :local(.icon) {
+    font-size: 1rem;
+}
+
+:local(.dates) {
+    font-size: 0.9rem;
+    color: var(--greyText);
+}
+
+:local(.prices) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+}
+
+:local(.basePrice) span {
+    font-size: 1rem;
+    color: var(--textColor);
+}
+
+:local(.totalPrice) h5 {
+    font-size: 1.5rem;
+    color: var(--blackColor);
+    margin: 0;
+}
+
+:local(.discount) {
+    background: var(--gradientColor);
+    color: var(--whiteColor);
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.5rem;
+    font-size: 0.8rem;
+    align-self: flex-start;
+}
+
+:local(.btn) {
+    margin-top: auto;
+    padding: 0.75rem 1rem;
+    background: var(--PrimaryColor);
+    color: var(--whiteColor);
+    border: none;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: background 0.3s ease;
+}
+
+:local(.btn):hover {
+    background: var(--SecondaryColor);
+}
+

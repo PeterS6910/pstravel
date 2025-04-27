@@ -4,6 +4,7 @@ import Home from '~/Components/Home/Home'
 import Main from '~/Components/Main/Main'
 import Navbar from '~/Components/Navbar/Navbar'
 import { LocalityCheckboxTreeNode, getLocalityCheckBoxTree } from '~/back/locality'
+import { IOffer, getOffers } from '~/back/offer'
 
 import { type MetaFunction } from "@remix-run/node";
 
@@ -11,7 +12,8 @@ import { type MetaFunction } from "@remix-run/node";
 const FILE = "routes/_index.tsx";
 
 interface ILoaderData {
-    loclityCheckboxTree: LocalityCheckboxTreeNode[]
+    loclityCheckboxTree: LocalityCheckboxTreeNode[],
+    offers: IOffer[]
 }
 
 export const meta: MetaFunction = () => {
@@ -24,13 +26,23 @@ export const meta: MetaFunction = () => {
 export const loader = async (/*args: LoaderFunctionArgs*/) => {
     const FUNC = 'loader()';
     try {
-        let loclityCheckboxTree = await getLocalityCheckBoxTree();
-        //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-        //console.log(`${FILE}:${FUNC}: @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@ loclityCheckboxTree:`, loclityCheckboxTree);
+        let loclityCheckboxTreePromise =  getLocalityCheckBoxTree();
+        let offersPromise = getOffers();
+
+        let promise = Promise.all([loclityCheckboxTreePromise, offersPromise]);
+        let results = await promise;
+        let loclityCheckboxTree = results[0];
+        let offers = results[1];
+
+        //console.log(`${FILE}:${FUNC}: loclityCheckboxTree:`);
         //console.dir(loclityCheckboxTree, { depth: null });
-        //@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+        //console.log(`${FILE}:${FUNC}: offers:`);
+        //console.dir(offers, { depth: null });
+
+
         let loaderData: ILoaderData = {
-            loclityCheckboxTree: loclityCheckboxTree
+            loclityCheckboxTree: loclityCheckboxTree,
+            offers: offers
         };
         return loaderData;
     } catch (err) {
@@ -42,13 +54,17 @@ export const loader = async (/*args: LoaderFunctionArgs*/) => {
 export default function Index() {
     const loaderData = useLoaderData<typeof loader>();
     const loclityCheckboxTree = loaderData.loclityCheckboxTree;
+    const offers = loaderData.offers;
+
+    console.log(`${FILE}:Index: offers:`);
+    console.dir(offers, { depth: null });
 
 
     return (
         <>
             <Navbar />
             <Home loclityCheckboxTree={loclityCheckboxTree} />
-            <Main />
+            <Main offers={offers} />
             <Footer />
 
         </>
