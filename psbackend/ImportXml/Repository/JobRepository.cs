@@ -9,16 +9,16 @@ using System.Threading.Tasks;
 
 namespace ImportXml.Repository
 {
-    public class JobRepository : EntityRepository<Job>
+    public class JobRepository : EntityRepository<Job, Guid>
     {
         public JobRepository(DbContext context) : base(context)
         {
         }
 
         // Špecifická metóda pre získanie naplanovaneho jobu
-        public async Task<Job?> GetNaplanovanyJobAsync()
+        public async Task<Job?> GetNaplanovanyJobAsync(string virtualka)
         {
-            return await _context.Set<Job>().FirstOrDefaultAsync(j => j.ScheduledTime <= DateTime.Now && j.JobStateId.ToString() == ConstansJobState.NaplanovanyJobId);
+            return await _context.Set<Job>().FirstOrDefaultAsync(j => j.ScheduledTime <= DateTime.UtcNow && j.JobStateId == ConstansJobState.NaplanovanyJobId && j.Virtualka == virtualka);
         }
 
         public async Task EndJobAndCreateJob(Job jobsToRun)
@@ -26,7 +26,7 @@ namespace ImportXml.Repository
             using var transaction = await _context.Database.BeginTransactionAsync();
             try
             {                
-                jobsToRun.JobStateId = Guid.Parse(ConstansJobState.SpracovanyJobId);
+                jobsToRun.JobStateId = ConstansJobState.SpracovanyJobId;
                 jobsToRun.UpdatedAt = DateTime.UtcNow;
                 await UpdateAsync(jobsToRun);
                 var inputParam = JsonConvert.DeserializeObject<ImputParameter>(jobsToRun.InputParameters);
@@ -36,8 +36,9 @@ namespace ImportXml.Repository
                 {
                     Id = Guid.NewGuid(),
                     Name = jobsToRun.Name,
+                    Virtualka = jobsToRun.Virtualka,
                     JobCodeId = jobsToRun.JobCodeId,
-                    JobStateId = Guid.Parse(ConstansJobState.NaplanovanyJobId),
+                    JobStateId = ConstansJobState.NaplanovanyJobId,
                     ScheduledTime = DateTime.UtcNow.AddMinutes(minuty),
                     InputParameters = jobsToRun.InputParameters,
                     Description = jobsToRun.Description,

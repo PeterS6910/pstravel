@@ -1,18 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace ImportXml.AfiTravelModel
 {
-    public class Transport : BaseEntity
+    public class Transport : BaseEntity<short>
     {
         [Key]
-        public override Guid Id { get; set; } = Guid.NewGuid();
+        [Required]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public override short Id { get; set; } 
 
-        public Guid? ParentTransportId { get; set; }
+        public short? ParentTransportId { get; set; }
 
         [MaxLength(30)]
         [Required]

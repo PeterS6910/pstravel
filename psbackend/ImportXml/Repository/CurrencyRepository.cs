@@ -8,29 +8,29 @@ using System.Threading.Tasks;
 
 namespace ImportXml.Repository
 {
-    public class CurrencyRepository : EntityRepository<Currency>
+    public class CurrencyRepository : EntityRepository<Currency, short>
     {
         public CurrencyRepository(DbContext context) : base(context)
         {
         }
 
-        public async Task<Guid> GetIdOrCreateCurrencyByNameAsync(string currencyName)
+        public async Task<short> GetIdOrCreateCurrencyByNameAsync(string currencyName)
         {
             if (string.IsNullOrEmpty(currencyName))
             {
-                return Guid.Empty;
+                return 0;
             }
             var currency = await _context.Set<Currency>().FirstOrDefaultAsync(c => c.CurrencyName == currencyName);
             if (currency == null)
             {
                 currency = new Currency
-                {
-                    Id = Guid.NewGuid(),
+                {                    
                     CurrencyName = currencyName,
                     CreatedAt = DateTime.UtcNow,
                 };
-                await _context.Set<Currency>().AddAsync(currency);
+                var addedEntity = await _context.Set<Currency>().AddAsync(currency);
                 await _context.SaveChangesAsync();
+                return addedEntity.Entity.Id;
             }
             return currency.Id;
         }

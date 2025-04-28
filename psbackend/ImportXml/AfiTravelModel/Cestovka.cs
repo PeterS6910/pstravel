@@ -9,10 +9,11 @@ using System.Xml.Serialization;
 
 namespace ImportXml.AfiTravelModel
 {
-    public class Cestovka : BaseEntity
+    public class Cestovka : BaseEntity<short>
     {
         [Key]
-        public override Guid Id { get; set; }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public override short Id { get; set; }
 
         [MaxLength(80)]
         public string Nazov { get; set; }

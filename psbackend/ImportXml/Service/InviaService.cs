@@ -18,7 +18,7 @@ namespace ImportXml.Service
         private readonly HotelRepository _hotelRepository;
         private readonly ImagesRepository _imagesRepository;
         private readonly OfferRepository _offerRepository;
-
+        private readonly string _virtualka;
         
         //private readonly JobRepository _jobRepository;
 
@@ -33,7 +33,7 @@ namespace ImportXml.Service
             _localityRepository = localityRepository;
             _hotelRepository = hotelRepository;
             _imagesRepository = imagesRepository;
-            _offerRepository = offerRepository;
+            _offerRepository = offerRepository;           
 
  
             //_jobRepository = jobRepository;
@@ -44,7 +44,7 @@ namespace ImportXml.Service
             if (!string.IsNullOrEmpty(inputParameter))
             {
                 ImputParameter? inputParam = JsonConvert.DeserializeObject<ImputParameter>(inputParameter);
-                var cestovkaId = await _cestovkaRepository.GetIdByCestovkaNameAsync("Invia.sk, s.r.o.");
+                var cestovkaId = await _cestovkaRepository.GetIdByCestovkaNameAsync("Invia.sk            ,s.r.o.");
                 if (inputParam != null)
                 {
                     XDocument? xDoc = await DownloadXmlDocumentAsync(inputParam.Url);
@@ -56,15 +56,14 @@ namespace ImportXml.Service
             }
         }
 
-        private async Task InviaParseXmlDoc(XDocument xDoc, Guid cestovkaId)
+        private async Task InviaParseXmlDoc(XDocument xDoc, short cestovkaId)
         {
             foreach (var offer in xDoc.Descendants("offer"))
             {
                 var countryId = await _countryRepository.GetOrCreateCountryByNameAsync(offer.Element("destination")?.Element("country")?.Value ?? string.Empty);
-                if (!countryId.Equals(Guid.Empty))
+                if (!countryId.Equals(short.MinValue))
                 {
-                    Guid? localityId = null;
-                    localityId = await _localityRepository.GetIdOrCreateLocalityByNameAsync(countryId, offer.Element("destination")?.Element("locality")?.Value ?? string.Empty);
+                    var localityId = await _localityRepository.GetIdOrCreateLocalityByNameAsync(countryId, offer.Element("destination")?.Element("locality")?.Value ?? string.Empty);
                     var hotel = await _hotelRepository.GetOrCreateHotelByNameCountryLocalityAsync(offer.Element("hotel")?.Value, offer, countryId, localityId, cestovkaId);
                     if (hotel != null)
                     {

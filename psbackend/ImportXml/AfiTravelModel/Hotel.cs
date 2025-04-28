@@ -8,15 +8,15 @@ using System.Xml.Serialization;
 
 namespace ImportXml.AfiTravelModel
 {
-    public class Hotel : BaseEntity
+    public class Hotel : BaseEntity <Guid>
     {
         [Key]
         [Required]
         public override Guid Id { get; set; } = Guid.NewGuid();
 
-        public Guid CountryId { get; set; }
+        public short CountryId { get; set; }
 
-        public Guid? LocalityId { get; set; }
+        public int? LocalityId { get; set; }
 
         [StringLength(120)]
         public string Name { get; set; }

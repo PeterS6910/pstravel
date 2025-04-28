@@ -20,8 +20,10 @@ using ImportXml.Service;
 
 class Program
 {
-    static async Task Main()
+    static async Task Main(string[] args)
     {
+        string virtualka = "1";
+        if (args != null && args.Length > 0) virtualka = args[0];
         // Základná správa na konzolu
         Console.WriteLine("Hello, Import data!");
         Job? jobsToRun = null;
@@ -42,20 +44,21 @@ class Program
                     var hotelRepo = new HotelRepository(dbContext, hotelDetailsRepo);
                     var imagesRepo = new ImagesRepository(dbContext);
                     var transportRepo = new TransportRepository(dbContext);
-                    var offerRepo = new OfferRepository(dbContext, currencyRepo, foodRepo, transportRepo);
+                    var offerTourTypeRepo = new OfferTourTypesRepository(dbContext);
+                    var offerRepo = new OfferRepository(dbContext, currencyRepo, foodRepo, transportRepo, offerTourTypeRepo);
 
                     var inviaService = new InviaService(cestovkaRepo, countryRepo, localityRepo, hotelRepo, imagesRepo, offerRepo);
 
                     // Načítanie úloh, ktoré sú naplánované na spustenie
-                    jobsToRun = await jobRepo.GetNaplanovanyJobAsync();
+                    jobsToRun = await jobRepo.GetNaplanovanyJobAsync(virtualka);
 
 
                     if (jobsToRun != null)
                     {
-                        jobsToRun.JobStateId = Guid.Parse(ConstansJobState.SpracovavaSaJobId);
+                        jobsToRun.JobStateId = ConstansJobState.SpracovavaSaJobId;
                         await jobRepo.UpdateAsync(jobsToRun);
                         // Pre každú úlohu vykonať potrebnú logiku
-                        switch (jobsToRun.JobCodeId.ToString())
+                        switch (jobsToRun.JobCodeId)
                         {
                             case ConstansJob.inviaJobId: await inviaService.ProcessImportXmlFeedAsync(jobsToRun.InputParameters); break;
                             default: break;
@@ -67,10 +70,10 @@ class Program
                 {
                     if (jobsToRun != null && jobRepo != null)
                     {
-                        jobsToRun.JobStateId = Guid.Parse(ConstansJobState.ChybaJobId);
+                        jobsToRun.JobStateId = ConstansJobState.ChybaJobId;
                         await jobRepo.UpdateAsync(jobsToRun);
                     }
-                    Console.WriteLine($"Job {jobsToRun?.Id} padol: {ex.Message}");
+                    Console.WriteLine($"Job {jobsToRun?.Id} padol: {ex.Message}, inner:{ex.InnerException}");
                 }
             }            
             await Task.Delay(120000);

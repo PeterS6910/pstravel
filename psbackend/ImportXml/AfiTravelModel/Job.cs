@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ImportXml.AfiTravelModel
 {
-    public class Job : BaseEntity
+    public class Job : BaseEntity <Guid>
     {
 
         [Key]
@@ -16,9 +16,12 @@ namespace ImportXml.AfiTravelModel
         [MaxLength(30)]
         public string Name { get; set; }
 
-        public Guid JobCodeId { get; set; }
+        [MaxLength(2)]
+        public string Virtualka {  get; set; }
 
-        public Guid JobStateId { get; set; }
+        public short JobCodeId { get; set; }
+
+        public short JobStateId { get; set; }
 
         public DateTime ScheduledTime { get; set; }
 

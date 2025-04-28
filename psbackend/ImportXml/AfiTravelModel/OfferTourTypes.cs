@@ -1,19 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace ImportXml.AfiTravelModel
 {
-    public class OfferTourTypes : BaseEntity
+    public class OfferTourTypes : BaseEntity<Guid>
     {
         [Key]
-        public override Guid Id { get; set; } = Guid.NewGuid();
+        [Required]
+        public override Guid Id { get; set; } 
 
         public Guid OfferId { get; set; }
 
-        public Guid TourTypesId { get; set; }
+        public short TourTypesId { get; set; }
     }
 }

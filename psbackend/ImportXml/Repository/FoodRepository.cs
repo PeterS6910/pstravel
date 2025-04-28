@@ -8,25 +8,25 @@ using System.Threading.Tasks;
 
 namespace ImportXml.Repository
 {
-    public class FoodRepository : EntityRepository<Food>
+    public class FoodRepository : EntityRepository<Food, short>
     {
         public FoodRepository(DbContext context) : base(context)
         {
         }
 
-        public async Task<Guid> GetIdOrCreateByFoodNameAsync(string foodName)
+        public async Task<short> GetIdOrCreateByFoodNameAsync(string foodName)
         {
             var food = await _context.Set<Food>().FirstOrDefaultAsync(c => c.FoodName == foodName);
             if (food == null)
             {
                 food = new Food
                 {
-                    Id = Guid.NewGuid(),
                     FoodName = foodName,
                     CreatedAt = DateTime.UtcNow,
                 };
-                await _context.AddAsync(food);
+                var addedEntity = await _context.Set<Food>().AddAsync(food);
                 await _context.SaveChangesAsync();
+                return addedEntity.Entity.Id;                
             }
             return food.Id;
         }

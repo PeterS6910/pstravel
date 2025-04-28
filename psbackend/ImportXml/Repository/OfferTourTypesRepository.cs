@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ImportXml.Repository
 {
-    public class OfferTourTypesRepository : EntityRepository<OfferTourTypes>
+    public class OfferTourTypesRepository : EntityRepository<OfferTourTypes, Guid>
     {
         public OfferTourTypesRepository(DbContext context) : base(context)
         {
@@ -20,28 +20,27 @@ namespace ImportXml.Repository
             return await _context.Set<Country>().FirstOrDefaultAsync(c => c.CountryName == countryName);
         }
 
-        public async Task<Guid> GetOrCreateCountryByNameAsync(string countryName)
+        public async Task CreateTourTypesByOfferAsync(List<string> tourTypes, Guid offeId)
         {
-            if (string.IsNullOrEmpty(countryName))
+            foreach(var typeName in tourTypes)
             {
-                return Guid.Empty;
-            }
-
-            var country = await _context.Set<Country>().FirstOrDefaultAsync(c => c.CountryName == countryName);
-            if (country == null)
-            {
-                country = new Country
+                var type = await _context.Set<TourTypes>().FirstOrDefaultAsync(x=>x.TourTypesName == typeName);
+                if(type != null)
                 {
-                    Id = Guid.NewGuid(),
-                    CountryName = countryName,
-                    CreatedAt = DateTime.UtcNow
-                };
-
-                await _context.Set<Country>().AddAsync(country);
-                await _context.SaveChangesAsync();
+                    var offerTourTypes = await _context.Set<OfferTourTypes>().FirstOrDefaultAsync(c => c.OfferId == offeId && c.TourTypesId == type.Id);
+                    if (offerTourTypes == null) 
+                    {
+                        OfferTourTypes newOfferTourTypes = new OfferTourTypes
+                        {
+                            Id = Guid.NewGuid(),
+                            OfferId = offeId,
+                            TourTypesId = type.Id,
+                            CreatedAt = DateTime.UtcNow,
+                        };
+                        await AddAsync(newOfferTourTypes);
+                    }
+                }
             }
-
-            return country.Id;
         }
     }
 }
