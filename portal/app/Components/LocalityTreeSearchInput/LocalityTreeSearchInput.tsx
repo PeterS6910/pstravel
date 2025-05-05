@@ -37,7 +37,9 @@ const LocalityTreeSearchInput: React.FC<LocalityTreeSearchInputProps> = ({
     const [searchText, setSearchText] = useState('');
     const containerRef = useRef<HTMLDivElement>(null);
 
+    //console.log('--------------------------------------------------- tree data:');
     //printTreeData(treeData);
+    //console.log('--------------------------------------------------- ');
 
     // Recursively gather all descendant values of a node.
     const getDescendantValues = (node: LocalityCheckboxTreeNode): string[] => {

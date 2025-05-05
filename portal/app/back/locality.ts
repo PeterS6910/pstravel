@@ -3,20 +3,21 @@ import { dbpool } from './dbpool';
 const FILE = 'back/locality.ts'
 
 interface ICountry {
-	id: string;
+	id: number; // db id
 	isNajziadanejsia: boolean;
 	countryName: string;
 }
 
 interface ILocality {
-	id: string;
-	countryId: string;
-	parentLocalityId?: string;  // optional, since it may be NULL
+	id: number; // db id
+	countryId: number;
+	parentLocalityId?: number;  // optional, since it may be NULL
 	localityName: string;
 }
 
 export interface LocalityCheckboxTreeNode {
 	value: string;
+    id: number; // db id
 	label: string;
     isCountry: boolean;
 	children: LocalityCheckboxTreeNode[];
@@ -83,7 +84,8 @@ export async function getLocalityCheckBoxTree(): Promise<LocalityCheckboxTreeNod
 	function buildLocalityTreeMode( parentLocality: ILocality, localities: ILocality[]): LocalityCheckboxTreeNode {
 
         let node: LocalityCheckboxTreeNode = {
-            value: parentLocality.id,
+            value: 'l' + parentLocality.id, // l for locality
+            id: parentLocality.id,
             label: parentLocality.localityName,
             isCountry: false,
             children: []
@@ -110,7 +112,8 @@ export async function getLocalityCheckBoxTree(): Promise<LocalityCheckboxTreeNod
 		);
 
         let node: LocalityCheckboxTreeNode = {
-            value: country.id,
+            value: 'c' + country.id, // c for country
+            id: country.id,
             label: country.countryName,
             isCountry: true,
             children: []
